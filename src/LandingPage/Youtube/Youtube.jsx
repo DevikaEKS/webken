@@ -1,0 +1,37 @@
+import { ACHIEVEMENTS } from "../../utils/Links";
+
+export default function Youtube() {
+  return (
+    <section className="flex flex-col items-center px-1 md:px-4 py-10 m-2 md:m-0">
+      
+      
+      <div className="w-full max-w-[1307px] aspect-video rounded-xl overflow-hidden">
+        
+        <div className="relative w-full h-full">
+           <iframe 
+           className="w-full h-full" 
+          src="https://www.youtube.com/embed/ozWx4OdWW-0?autoplay=1&loop=1&playlist=ozWx4OdWW-0&mute=1" 
+           title="My Spine Surgery Philosophy" frameborder="0" 
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              referrerPolicy="strict-origin-when-cross-origin "
+           ></iframe>
+        </div>
+
+      </div>
+
+      
+      <div className="font-helvetica grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10 w-full max-w-5xl px-2">
+        {ACHIEVEMENTS.map((data) => (
+          <div
+            key={data.id}
+            className="w-full rounded-xl shadow-lg shadow-[#8787836B] flex flex-col justify-center items-center space-y-3 p-6"
+          >
+            <h1 className="font-bold text-[36px] md:text-[48px] text-[#001040]">{data.count}</h1>
+            <p className="text-[#FFA200] text-[20px] md:text-[24px] font-bold text-center">{data.name}</p>
+          </div>
+        ))}
+      </div>
+      
+    </section>
+  );
+}

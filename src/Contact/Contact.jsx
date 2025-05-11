@@ -1,0 +1,175 @@
+import React, { useState } from 'react';
+import locationim from "../assets/location.png";
+import mailimg from "../assets/mail.png";
+import telimg from "../assets/telephone.png";
+
+function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({});
+
+ const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  setFormData(prev => ({ 
+    ...prev,
+    [name]: value,
+  }));
+
+  let newErrors = { ...errors };
+
+  if (name === 'name') {
+    const nameRegex = /^[a-zA-Z\s.]{2,}$/;
+    if (!nameRegex.test(value)) {
+      newErrors.name = "Enter a valid name ";
+    } else {
+      delete newErrors.name;
+    }
+  }
+
+  if (name === 'email') {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      newErrors.email = "Enter a valid email address";
+    } else {
+      delete newErrors.email;
+    }
+  }
+
+  setErrors(newErrors);
+};
+
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length === 0) {
+      alert("Form submitted successfully!");
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-8 md:py-12 font-normal">
+      <div className="flex flex-col md:flex-row gap-8 sm:gap-12">
+        {/* Contact Information Section */}
+        <div className="w-full lg:w-1/2 xl:w-7/12 space-y-2"> 
+          <div className="bg-white p-6 rounded-lg">
+             <h1 className="text-3xl md:text-4xl font-bold text-[#001040] text-center md:text-left my-1 md:my-5">Contact Us</h1>
+            <p className=" text-[#ffa200] text-2xl mb-4">For Patient Inquiries, Please Contact:</p>
+            <p className="mb-6 text-[#001040] text-lg">The Spine Center at Community Primary Care of Premier Medical Group</p>
+
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <img src={telimg} alt="Phone" className="w-5 h-5 mt-1 flex-shrink-0" />
+                <a href="tel:845-226-4590" className="text-[#001040] text-lg transition-colors">
+                  845-226-4590
+                </a>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <img src={mailimg} alt="Email" className="w-5 h-5 mt-1 flex-shrink-0" />
+                <a href="mailto:DrKen@DrKen.us" className=" text-lg text-[#001040]  transition-colors">
+                  DrKen@DrKen.us
+                </a>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <img src={locationim} alt="Location" className="w-5 h-5 mt-1 flex-shrink-0" />
+                <a href="#" className="text-[#001040]  transition-colors text-lg">
+                  New York Office
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Form Section */}
+        <div className="w-full lg:w-1/2 xl:w-5/12">
+          <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg font-normal">
+            <p className="text-center text-gray-600 mb-6">
+              For Author Inquiries, Please Send a Message
+            </p>
+            
+            <form onSubmit={handleSubmit} className="space-y-4 p-3">
+              <div>
+                <label htmlFor="name" className="block text-md font-medium text-[#001040] mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your Name"
+                  className={`w-full px-4 py-2 shadow-md rounded-md focus:outline-none focus:ring-2 ${
+                    errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+                  }`}
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-md font-medium text-[#001040] mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your Email"
+                  className={`w-full shadow-md px-4 py-2  rounded-md focus:outline-none focus:ring-2 ${
+                    errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+                  }`}
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-md font-medium text-[#001040] mb-1">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="4"
+                  placeholder="Your message"
+                  className="w-full px-4 py-2 shadow-md rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  value={formData.message}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+
+              <div className="pt-2 flex justify-center">
+                <button
+                  type="submit"
+                  className=" bg-[#001040] text-[#ffa200] py-2 px-6 rounded-md  transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Contact;
