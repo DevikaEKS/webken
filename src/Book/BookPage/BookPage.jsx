@@ -30,13 +30,16 @@ export default function BookPage() {
                 {BOOKS.map((book, index) => (
                     <div
                         key={index}
-                        className="flex flex-col justify-center items-center w-full sm:w-[313px] h-[381px]  p-4"
+                        className="flex flex-col justify-center items-center w-full sm:w-[313px] h-[381px]  p-4 bg-[#F5F5F5] border border-[#BAB8B8] rounded-lg"
                     >
-                        <img src={book.image} alt={book.title} className="w-full h-68 object-contain" />
+                        <div className="flex flex-col justify-center items-center p-15 h-full">
+                            <img src={book.image} alt={book.title} className="w-full h-68 object-contain" />
+                        </div>
                         <p className="mt-2 font-semibold text-center">{book.title}</p>
                         <p className="text-gray-700">{book.price}</p>
                         <p className="text-yellow-500">{book.stars}</p>
                         <a href="#" className="text-blue-600 underline mt-2">View All</a>
+                        
                     </div>
                 ))}
             </div>

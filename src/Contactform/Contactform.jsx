@@ -67,6 +67,7 @@
 
 import React, { useState } from 'react';
 import "./Contactform.css";
+import axios from 'axios';
 
 function Contactform() {
   const [formData, setFormData] = useState({
@@ -97,12 +98,19 @@ function Contactform() {
     setErrors(newErrors);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    if (Object.keys(errors).length === 0 && formData.firstName && formData.lastName && formData.email) {
+    const response = await axios.post("http://localhost:3000/api/v1/user/email-form",formData)
+
+    if(response.status === 200){
       alert("Form submitted successfully!");
-    } else {
-      alert("Please fix the errors in the form.");
+      setFormData({
+        firstName :"",
+        lastName : "",
+        email :""
+      })
+    }else{
+      setErrors(response.data.message)
     }
   };
 

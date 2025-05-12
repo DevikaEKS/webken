@@ -2,7 +2,7 @@ import { BrowserRouter as Router,Routes,Route } from "react-router-dom"
 
 import Navbar from "./Landingpage/Navbar/Navbar"
 import HeroSection from "./Landingpage/HeroSection/HeroSection"
-import Footer from "./Landingpage/Footer/Footer"
+import Footer from "./LandingPage/Footer/Footer"
 import Course from "./LandingPage/Course/Course"
 import Youtube from "./LandingPage/Youtube/Youtube"
 import LatestBook from "./LandingPage/LatestBook/LatestBook"
@@ -23,6 +23,7 @@ import BookPage from "./Book/BookPage/BookPage"
 import Contact from "./Contact/Contact"
 import Contactform from "./Contactform/Contactform"
 import Maparea from "./Maparea/Maparea"
+import Adminlogin from "./Admin/AdminLogin"
 
 function App() {
  
@@ -30,6 +31,7 @@ function App() {
   return (
    <Router>
       <Routes>
+        <Route path="/admin/login" element={[<Adminlogin/>]}/>
         <Route path="/" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Testimonial/>,<Footer/>]} />
         <Route path="/about" element={[<Navbar/>,<Hero/>,<AboutSection/>,<Work/>,<Footer/>]} />
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />

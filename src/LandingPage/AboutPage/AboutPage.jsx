@@ -36,7 +36,7 @@ function Aboutpage() {
             </div>
 
         
-            <div className="absolute -bottom-10 -right-5 md:-bottom-20 md:-right-10">
+            <div className="absolute -bottom-10 -right-3 md:-bottom-20 md:-right-4">
               <div className="w-[150px] h-[150px] md:w-[206px] md:h-[206px] rounded-full bg-gradient-to-tr from-orange-400 to-yellow-300 shadow-lg flex items-center justify-center border-4 border-white">
                 <img src="./spine.png" alt="Spine" className="w-[80px] h-[140px] md:w-[106px] md:h-[182px] object-contain" />
               </div>

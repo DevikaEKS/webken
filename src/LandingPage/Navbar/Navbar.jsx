@@ -4,6 +4,7 @@ import { Links } from "../../utils/Links";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+
   return (
     <nav className="bg-[#001040] w-full">
       <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-10 py-4">

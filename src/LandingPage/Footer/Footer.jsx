@@ -40,7 +40,7 @@ export default function Footer() {
                   className="text-white text-[16px] md:text-[18px] flex items-start gap-2"
                 >
                   {item.type === "address" ? (
-                    <div className="flex flex-col">
+                    <div className="flex flex-col  font-medium">
                       <div>{item.value.split(',')[0]},</div>
                       <div>
                         {item.value.split(',')[1]?.trim()},{" "}
@@ -48,10 +48,10 @@ export default function Footer() {
                       </div>
                     </div>
                   ) : (
-                    <>
+                    <div className="flex items-center space-x-3">
                       {Icon && <Icon />}
                       <span className="font-helvetica font-medium">{item.value}</span>
-                    </>
+                    </div>
                   )}
                 </div>
               );

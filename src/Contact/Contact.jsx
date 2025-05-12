@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import locationim from "../assets/location.png";
 import mailimg from "../assets/mail.png";
 import telimg from "../assets/telephone.png";
+import axios from 'axios';
 
 function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
+    full_name: '',
     email: '',
     message: '',
   });
@@ -46,13 +47,20 @@ function Contact() {
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
+
+    const response = await axios.post("http://localhost:3000/api/v1/user/contact-form",formData)
+    if(response.status === 200){
       alert("Form submitted successfully!");
-    } else {
-      setErrors(validationErrors);
+      setFormData({
+        full_name : "",
+        message : "",
+        email :""
+      })
+    }else{
+      setErrors(response.data.message)
     }
   };
 
@@ -100,13 +108,13 @@ function Contact() {
             
             <form onSubmit={handleSubmit} className="space-y-4 p-3">
               <div>
-                <label htmlFor="name" className="block text-md font-medium text-[#001040] mb-1">
+                <label htmlFor="full_name" className="block text-md font-medium text-[#001040] mb-1">
                   Name
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
+                  name="full_name"
+                  id="full_name"
                   placeholder="Enter your Name"
                   className={`w-full px-4 py-2 shadow-md rounded-md focus:outline-none focus:ring-2 ${
                     errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'

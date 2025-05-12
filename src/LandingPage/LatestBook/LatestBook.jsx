@@ -3,7 +3,7 @@ export default function LatestBook() {
     <section className="py-10 px-4 flex flex-col-reverse lg:flex-row items-center lg:space-x-12 ">
       
       
-      <div className="flex flex-col ml-10 max-w-3xl">
+      <div className="flex flex-col md:ml-10 max-w-3xl">
         <h1 className="font-bold text-3xl mb-10 md:text-4xl lg:text-[48px] text-[#001040]">
           The Latest Book<span className="text-[#F99420]">.</span>
         </h1>
