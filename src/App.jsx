@@ -14,7 +14,7 @@ import Studies from "./LandingPage/Studies/Studies"
 import OurVideos from "./LandingPage/OurVideos/OurVideos"
 import SpeakerCard from "./LandingPage/SpeakerCard/SpeakerCard"
 import Testimonial from "./LandingPage/Testimonial/Testimonial"
-import Aboutpage from "./LandingPage/AboutPage/AboutPage"
+import Aboutpage from "./LandingPage/AboutPage/AboutPage.jsx";
 import AboutSection from "./About/AboutSection/AboutSection"
 import Blog from "./Blog/BlogMain/Blog"
 import Hero from "./About/Hero/Hero"
@@ -24,6 +24,7 @@ import Contact from "./Contact/Contact"
 import Contactform from "./Contactform/Contactform"
 import Maparea from "./Maparea/Maparea"
 import Adminlogin from "./Admin/AdminLogin"
+import BookOrderPage from "./Book/BookOrder/BookOrderPage.jsx";
 
 function App() {
  
@@ -36,6 +37,7 @@ function App() {
         <Route path="/about" element={[<Navbar/>,<Hero/>,<AboutSection/>,<Work/>,<Footer/>]} />
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />
         <Route path="/book" element={[<Navbar/>,<BookPage />,<Footer/>]} />
+        <Route path="/book/:title" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
         <Route path="/contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
       </Routes>
    </Router>

@@ -1,45 +1,44 @@
-// import { BOOKS } from "../../utils/Links";
-
-// export default function BookPage(){
-//     return(
-//         <section className="py-20  w-full">
-//             <div className="flex flex-wrap justify-center gap-6">
-//                 {BOOKS.map((book) => (
-//                     <div className="flex flex-col justify-center w-[313px] h-[381px]">
-//                         <div>
-//                             <img src={book.image} className="w-full object-contain" />
-//                         </div>
-//                         <p>{book.title}</p>
-//                         <p>{book.price}</p>
-//                         <p>{book.stars}</p>
-//                         <a>View All</a>
-//                     </div>
-//                 ))}
-//             </div>
-//         </section>
-//     )
-// }
-
-
 import { BOOKS } from "../../utils/Links";
+import { useNavigate} from "react-router-dom";
+
+
 
 export default function BookPage() {
+    const navigate = useNavigate();
+
     return (
         <section className="py-20 w-full">
             <div className="flex flex-wrap justify-center gap-6">
                 {BOOKS.map((book, index) => (
                     <div
                         key={index}
-                        className="flex flex-col justify-center items-center w-full sm:w-[313px] h-[381px]  p-4 bg-[#F5F5F5] border border-[#BAB8B8] rounded-lg"
+                        className="flex flex-col  overflow-hidden bg-white"
                     >
-                        <div className="flex flex-col justify-center items-center p-15 h-full">
-                            <img src={book.image} alt={book.title} className="w-full h-68 object-contain" />
+
+                        <div className="flex justify-center items-center h-[450px] w-full sm:w-[350px] border border-[#BAB8B8] rounded-lg bg-[#F5F5F5] px-4 py-6">
+                            <img
+                                src={book.image}
+                                alt={book.title}
+                                className="object-contain max-h-full"
+                            />
                         </div>
-                        <p className="mt-2 font-semibold text-center">{book.title}</p>
-                        <p className="text-gray-700">{book.price}</p>
-                        <p className="text-yellow-500">{book.stars}</p>
-                        <a href="#" className="text-blue-600 underline mt-2">View All</a>
-                        
+
+
+                        <div className="px-4 py-3 flex flex-col items-center">
+                            <p className="font-semibold text-lg text-black text-center">{book.title}</p>
+                            <p className="text-[#FFA200] font-bold text-xl mt-2">{book.price}</p>
+                            <div className="flex justify-center mt-2 text-[#F2C40B] text-lg gap-5">
+                                {'★'.repeat(book.stars)}
+                            </div>
+                            <div className="text-center mt-2">
+                                <button
+                                    onClick={() => navigate(`/book/${book.title}`)}
+                                    className="text-black underline text-lg font-medium "
+                                >
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

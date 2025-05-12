@@ -22,7 +22,7 @@ export default function Youtube() {
 
       <div
         ref={ref}
-        className="font-helvetica grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10 w-full max-w-5xl px-2"
+        className="font-helvetica grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-20 w-full max-w-6xl px-2"
       >
         {ACHIEVEMENTS.map((data) => (
           <div
