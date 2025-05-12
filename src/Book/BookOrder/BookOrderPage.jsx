@@ -26,8 +26,20 @@ export default function BookOrderPage() {
                 ))}
             </div>
 
-            <div>
-                {/* Page content goes here */}
+            <div className="flex flex-row space-x-10 ">
+                <div className="flex flex-col">
+                    <div className="border border-[#BAB8B8] bg-[#F5F5F5] w-[500px] h-[597px] flex flex-col justify-center items-center rounded-lg ">
+                        <img
+                            src="/watch.png"
+                            alt="Watch Your Back Book Cover"
+                            className="w-[334px] h-[500px] shadow-lg"
+                        />
+                    </div>
+                </div>
+                <div className="max-w-[754px] flex flex-col space-y-3">
+                    <h1 className="text-[#001040] font-semibold text-[35px] leading-10 w-full">Watch Your Back: Nine Proven Strategies to Reduce Your Neck and Back Pain Without Surgery</h1>
+                    <p className="text-[#001040] font-medium">by MD Hansraj, Ken (Author), Gary Crumpler (Illustrator)</p>
+                </div>
             </div>
         </section>
     );
