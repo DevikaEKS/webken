@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 function Aboutpage() {
+const navigate=useNavigate();
+  const aboutpagepart = () => {
+    navigate("/about");
+  };
   return (
     <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl py-20"> 
       <div className="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto items-start">
@@ -31,7 +37,7 @@ function Aboutpage() {
 
             <div className="mt-6">
               <button className="w-9 h-9 flex items-center justify-center rounded-full bg-white">
-                <img src="./arrow.png" alt="Arrow" className="w-4 h-4" />
+                <img src="./arrow.png" alt="Arrow" className="w-4 h-4"  onClick={aboutpagepart}/>
               </button>
             </div>
 

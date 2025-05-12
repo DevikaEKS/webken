@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 export default function HeroSection() {
+  const navigate = useNavigate();
+  const Bookspage = () => {
+    navigate("/book");
+  };
+  const Coursepage = () => {
+    navigate("/My-spine-coach");
+  };
+  
   return (
     <section className="p-4 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10 overflow-hidden">
      
@@ -21,11 +31,11 @@ export default function HeroSection() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
-          <button className="bg-[#EE4A62] w-full sm:w-auto px-6 py-3 flex items-center justify-center gap-2 rounded-lg">
+          <button className="bg-[#EE4A62] w-full sm:w-auto px-6 py-3 flex items-center justify-center gap-2 rounded-lg"  onClick={Bookspage}>
             <img src="./book (1).png" alt="Book Icon" className="w-6 h-6" />
             <span className="text-white font-bold text-base sm:text-lg">Best Selling Books</span>
           </button>
-          <button className="bg-[#FDA101] w-full sm:w-auto px-6 py-3 flex items-center justify-center gap-2 rounded-lg">
+          <button className="bg-[#FDA101] w-full sm:w-auto px-6 py-3 flex items-center justify-center gap-2 rounded-lg" onClick={Coursepage}>
             <img src="./play.png" alt="Play Icon" className="w-6 h-6" />
             <span className="text-white font-bold text-base sm:text-lg">My Spine Coach</span>
           </button>

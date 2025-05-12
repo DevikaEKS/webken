@@ -16,7 +16,7 @@ export default function Studies() {
         {STUDIES.map((study) => (
           <div
             key={study.id}
-            className="flex flex-col items-center justify-center max-w-[90vw] md:max-w-none "
+            className="flex flex-col  items-center justify-center max-w-[90vw] md:max-w-none "
           >
             <img
               src={study.img}

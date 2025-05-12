@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Work() {
+  const navigate=useNavigate();
+   const contactarea = () => {
+    navigate("/contact");
+  };
   return (
     <section className="py-20  px-4">
       <div className="flex flex-col justify-center items-center space-y-6 text-center">
@@ -17,7 +23,7 @@ export default function Work() {
         </p>
 
        
-        <button className="bg-[#FFB200] text-white font-semibold py-3 px-6 rounded-full w-max shadow hover:bg-[#e5a200] transition">
+        <button className="bg-[#FFB200] text-white font-semibold py-3 px-6 rounded-full w-max shadow hover:bg-[#e5a200] transition" onClick={contactarea}>
           Contact Us
         </button>
       </div>
