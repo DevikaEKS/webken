@@ -1,4 +1,5 @@
-import { createBook,deleteBook,getBooks, updateBook } from "../services/book-service.js";
+import { createBook,deleteBook,getBookById,getBooks, updateBook } from "../services/book-service.js";
+
 
 export async function handleCreateBook(req, res) {
   try {
@@ -8,12 +9,22 @@ export async function handleCreateBook(req, res) {
     if (!bookData.title) {
       return res.status(400).json({ error: "Title is required" });
     }
+     if (req.files && req.files.length > 0) {
+      
+      const imagePaths = req.files.map(file => file.path);
+    
+      bookData.images = imagePaths;
+    } else {
+      
+      bookData.images = [];
+    }
 
     const result = await createBook(bookData);
 
     return res.status(201).json({
       message: "Book created successfully",
-      bookId: result.insertId
+      bookId: result.insertId,
+      images: bookData.images
     });
 
   } catch (error) {
@@ -63,7 +74,33 @@ export async function handleDeleteBook(req,res){
         }
         return res.status(200).json({ message: "Book deleted successfully" });
     } catch (error) {
-         console.error("Error updating book:", error);
+         console.error("Error deleting book:", error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export  async function handleGetBookById(req,res){
+  const bookId = req.params.id;
+
+    if(!bookId){
+        return res.status(401).json({
+            message : "Provide an bookId to fetch"
+        })
+    }
+
+    try {
+        const result = await getBookById(bookId);
+        if(result.affectedRows === 0){
+            return res.status(404).json({ 
+              message: "Book is not present",
+            });
+        }
+        return res.status(200).json({ 
+          message: "Book fetched successfully",
+          book : result 
+        });
+    } catch (error) {
+         console.error("Error geting book book:", error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
 }

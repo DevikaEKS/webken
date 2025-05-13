@@ -11,7 +11,7 @@ export default function Navbar() {
         
         <div className="w-[200px] sm:w-[296px] h-[40px] sm:h-[52px]">
           <img
-            src="./image 66.png"
+            src="/image 66.png"
             alt="Logo"
             className="w-full h-full object-contain"
           />

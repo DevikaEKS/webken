@@ -12,7 +12,7 @@ function Contact() {
   });
 
   const [errors, setErrors] = useState({});
-
+  const token = localStorage.getItem("user-token")
  const handleChange = (e) => {
   const { name, value } = e.target;
 
@@ -67,7 +67,7 @@ function Contact() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-8 md:py-12 font-normal">
       <div className="flex flex-col md:flex-row gap-8 sm:gap-12">
-        {/* Contact Information Section */}
+        
         <div className="w-full lg:w-1/2 xl:w-7/12 space-y-2"> 
           <div className="bg-white p-6 rounded-lg">
              <h1 className="text-3xl md:text-4xl font-bold text-[#001040] text-center md:text-left my-1 md:my-5">Contact Us</h1>

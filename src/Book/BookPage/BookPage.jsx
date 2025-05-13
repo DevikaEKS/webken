@@ -1,48 +1,81 @@
-// import { BOOKS } from "../../utils/Links";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-// export default function BookPage(){
-//     return(
-//         <section className="py-20  w-full">
-//             <div className="flex flex-wrap justify-center gap-6">
-//                 {BOOKS.map((book) => (
-//                     <div className="flex flex-col justify-center w-[313px] h-[381px]">
-//                         <div>
-//                             <img src={book.image} className="w-full object-contain" />
-//                         </div>
-//                         <p>{book.title}</p>
-//                         <p>{book.price}</p>
-//                         <p>{book.stars}</p>
-//                         <a>View All</a>
-//                     </div>
-//                 ))}
-//             </div>
-//         </section>
-//     )
-// }
-
-
-import { BOOKS } from "../../utils/Links";
 
 export default function BookPage() {
-    return (
-        <section className="py-20 w-full">
-            <div className="flex flex-wrap justify-center gap-6">
-                {BOOKS.map((book, index) => (
-                    <div
-                        key={index}
-                        className="flex flex-col justify-center items-center w-full sm:w-[313px] h-[381px]  p-4 bg-[#F5F5F5] border border-[#BAB8B8] rounded-lg"
-                    >
-                        <div className="flex flex-col justify-center items-center p-15 h-full">
-                            <img src={book.image} alt={book.title} className="w-full h-68 object-contain" />
-                        </div>
-                        <p className="mt-2 font-semibold text-center">{book.title}</p>
-                        <p className="text-gray-700">{book.price}</p>
-                        <p className="text-yellow-500">{book.stars}</p>
-                        <a href="#" className="text-blue-600 underline mt-2">View All</a>
-                        
-                    </div>
-                ))}
+  const navigate = useNavigate();
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/v1/admin/getBooks");
+        if (res.status !== 200) throw new Error("Failed to fetch books");
+        const data = await res.data;
+        setBooks(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    console.log(books)
+
+    fetchBooks();
+  }, []);
+
+  if (loading) return <p className="text-center mt-10">Loading books...</p>;
+  if (error) return <p className="text-center mt-10 text-red-500">Error: {error}</p>;
+
+  return (
+    <section className="py-20 w-full px-4">
+      <div className="flex flex-wrap gap-20 mx-1 md:mx-10">
+        {books.map((book) => (
+          <div
+            key={book.id}
+            className="flex flex-col rounded-lg w-full sm:w-[250px] md:w-[220px] lg:w-[230px]  overflow-hidden"
+          >
+            <div
+              className="flex h-[300px] w-full border-1 border-[#BAB8B8] bg-[#F5F5F5]   rounded-lg cursor-pointer"
+              onClick={() => navigate(`/book/${book.id}`)}
+            >
+              <img
+                src={`http://localhost:3000/${book.images?.[0]?.replace(/\\/g, "/")}`}
+                alt={book.title}
+                className="object-contain max-h-full w-full shadow-md p-10"
+              />
             </div>
-        </section>
-    );
+
+            <div className="flex flex-col flex-1 justify-between px-4 py-3 w-full">
+              <p className="font-semibold text-lg text-black min-h-[56px] leading-snug line-clamp-3">
+                {book.title}
+              </p>
+
+              <p className="text-lg text-[#FFA200] line-clamp-1">
+                ${book.kindle}
+              </p>
+
+              <div className="flex mt-2 text-[#F2C40B] text-lg gap-1">
+                {"★".repeat(book.stars)}
+              </div>
+              
+
+              <div className="mt-3">
+                <button
+                  onClick={() => navigate(`/book/${book.id}`)}
+                  className="text-black underline text-lg font-medium"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

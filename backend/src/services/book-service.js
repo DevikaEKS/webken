@@ -1,35 +1,37 @@
 import { pool } from "../config/db.js";
 
-export async function createBook(bookData){
-    const {
-    title,
-    author_detail,
-    quantity,
-    kindle,
-    audible,
-    hardcover,
-    audio_cd,
-    book_description,
-    images = [] 
+export async function createBook(bookData) {
+  const { 
+    title, 
+    author_detail, 
+    quantity, 
+    kindle, 
+    audible, 
+    hardcover, 
+    audio_cd, 
+    book_description, 
+    images = [], 
+    stars 
   } = bookData;
 
   const [result] = await pool.execute(
-    `INSERT INTO book
-    (title, author_detail, quantity, kindle, audible, hardcover, audio_cd, book_description, images)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO book (title, author_detail, quantity, kindle, audible, hardcover, audio_cd, book_description, images, stars) 
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      title,
-      author_detail,
-      quantity,
-      kindle,
-      audible,
-      hardcover,
-      audio_cd,
-      book_description,
-      JSON.stringify(images)
-    ])
+      title, 
+      author_detail, 
+      quantity, 
+      kindle, 
+      audible, 
+      hardcover, 
+      audio_cd, 
+      book_description, 
+      JSON.stringify(images), 
+      stars
+    ]
+  );
 
-    return result
+  return result;
 }
 
 export async function getBooks(){
@@ -89,4 +91,13 @@ export async function deleteBook(bookId){
     )
 
     return result
+}
+
+export async function getBookById(bookId) {
+  const [rows] = await pool.execute(
+    `SELECT * FROM book WHERE id = ?`,
+    [bookId]
+  );
+
+  return rows[0]; 
 }

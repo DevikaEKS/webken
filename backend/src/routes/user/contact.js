@@ -1,6 +1,7 @@
 import Router  from "express";
 import { handleBlogForm, handleContactForm, handleEmailContactForm, handleGetBlogData, handleGetContacts, handleGetEmailContacts } from "../../controller/contact.js";
 
+
 const router = Router();
 
 

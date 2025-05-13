@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row items-start md:items-center md:h-[392px] w-full gap-y-8 md:gap-0">
         
         <div className="w-full md:w-[25%] flex justify-center md:justify-start md:ml-20">
-          <img className="w-[250px] md:w-[356px] h-auto" src="./image 66.png" alt="Logo" />
+          <img className="w-[250px] md:w-[356px] h-auto" src="/image 66.png" alt="Logo" />
         </div>
 
         

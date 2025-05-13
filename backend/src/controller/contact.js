@@ -2,9 +2,11 @@ import { isValidEmail } from "../utils/validator.js";
 import { saveContactMessage,getContactMessages } from "../services/contact-service.js"
 import { getEmailMessages, saveEmailMessage } from "../services/email-service.js";
 import { getBlogData, saveBlogData } from "../services/blog-service.js";
+import { sendThankYouEmail } from "../utils/sendEmail.js";
 
 export async function handleContactForm(req,res){
-    const { full_name,email,message } = req.body;
+    const { full_name,email,message } = req.body; 
+    
 
     if (!full_name || !email || !message) {
         return res.status(400).json({ success: false, error: "All fields are required." });
@@ -20,12 +22,16 @@ export async function handleContactForm(req,res){
 
     try {
         await saveContactMessage(full_name, email, message);
-        res.status(200).json({ success: true, message: "Form submitted successfully." });
+        await sendThankYouEmail(email,full_name)
+        return res.status(200).json({ success: true, message: "Form submitted successfully." });
     } catch (err) {
         console.error("Contact form error:", err);
-        res.status(500).json({ success: false, error: "Internal server error." });
+        return res.status(500).json({ success: false, error: "Internal server error." });
     }
 }
+
+
+
 
 export async function handleGetContacts(req, res) {
     try {

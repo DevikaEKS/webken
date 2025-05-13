@@ -24,6 +24,10 @@ import Contact from "./Contact/Contact"
 import Contactform from "./Contactform/Contactform"
 import Maparea from "./Maparea/Maparea"
 import Adminlogin from "./Admin/AdminLogin"
+import BookOrderPage from "./Book/BookOrderPage/BookOrderPage"
+import Userregistration from "./Register/UserRegister"
+import UserLogin from "./Login/UserLoginPage"
+import AdminBookForm from "./Admin/AdminBookForm/AdminBookForm"
 
 function App() {
  
@@ -31,11 +35,15 @@ function App() {
   return (
    <Router>
       <Routes>
+        <Route path="/register" element={[<Userregistration/>]} />
+        <Route path="/login" element={[<UserLogin/>]} />
         <Route path="/admin/login" element={[<Adminlogin/>]}/>
+        <Route path="/admin/book" element={[<AdminBookForm/>]} />
         <Route path="/" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Testimonial/>,<Footer/>]} />
         <Route path="/about" element={[<Navbar/>,<Hero/>,<AboutSection/>,<Work/>,<Footer/>]} />
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />
         <Route path="/book" element={[<Navbar/>,<BookPage />,<Footer/>]} />
+        <Route path="/book/:title" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
         <Route path="/contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
       </Routes>
    </Router>
