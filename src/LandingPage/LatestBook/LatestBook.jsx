@@ -30,7 +30,7 @@ export default function LatestBook() {
      
       <div className="w-full max-w-[350px] sm:max-w-[400px] lg:max-w-[504px] mb-8 lg:mb-0 p-1">
         <img
-          src="./book-watch-your-back.png"
+          src="./watch.png"
           alt="Watch Your Back Book Cover"
           className="w-full h-auto object-contain"
         />

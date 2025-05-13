@@ -228,7 +228,7 @@ export const certificationsData = [
 export const BOOKS = [{
   id : 1,
   title : "Watch Your Back",
-  image : "./book-watch-your-back.png",
+  image : "./watch.png",
   price: "$6.99",
   description : "",
   stars : 5,

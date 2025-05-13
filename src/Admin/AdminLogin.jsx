@@ -28,6 +28,7 @@ function Adminlogin() {
 
     if(response.status === 200){
         toast.success('Login successful!');
+        localStorage.setItem("status","logined")
         return true;
     }else{
         toast.error(response.data.message)
