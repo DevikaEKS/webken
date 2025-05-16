@@ -5,7 +5,7 @@ export const Links = [
   { id: 2, name: "About", link: "/about" },
   { id: 3, name: "Blog", link: "/blog" },
   { id: 4, name: "Book", link: "/book" },
-  { id: 5, name: "My Spine Coach", link: "/My-spine-coach" },
+  { id: 5, name: "My Spine Coach", link: "/myspinecoach" },
   { id: 6, name: "Contact", link: "/Contact" },
 ];
 
@@ -25,7 +25,7 @@ export const CONTACT_US = [
   {
     id: 3,
     type: "mail",
-    value: "DrKen@DrKen.us",
+    value: "drken@drken.us",
     icon: FaEnvelope ,
   },
 ];
@@ -35,25 +35,25 @@ export const SOCIAL = [
   {
     id: 1,
     name: "Facebook",
-    link: "/",
+    link: "https://www.facebook.com/ken.hansraj/",
     icon: FaFacebook ,
   },
   {
     id: 2,
     name: "Instagram",
-    link: "/",
+    link: "https://www.instagram.com/kennethhansraj/",
     icon: FaInstagram ,
   },
   {
     id: 3,
     name: "LinkedIn",
-    link: "/",
+    link: "https://www.linkedin.com/in/ken-hansraj-m-d-2076a1a/",
     icon: FaLinkedinIn ,
   },
   {
     id: 4,
     name: "Twitter",
-    link: "/",
+    link: "https://x.com/KenHansraj",
     icon: FaTwitter ,
   },
 ];
@@ -61,7 +61,7 @@ export const SOCIAL = [
 export const ACHIEVEMENTS = [{
   id : 1,
   count : 3,
-  name : "Best Sellers"
+  name : "Best-Sellers"
 },{
   id : 2,
   count : 80,
@@ -107,11 +107,15 @@ export const EXPERTS = [{
 export const STUDIES = [{
   id : 1,
   img : "./Text Neck Forces.png",
-  name : "Text Neck Forces."
+  name : "Text Neck Forces.",
+  alt : "Text neck illustration showing spine health impact from head tilt angles and increasing neck forces.",
+  title : "Text neck and its effect on spinal wellness, showing how tilt angles increase neck and back pain. Ideal for author and speaker content on self-care strategies and spine health."
 }, {
   id : 2,
   img : "./Backpack Forces.png",
-  name : "Backpack Forces."
+  name : "Backpack Forces.",
+  alt : "Backpack forces illustration showing spinal stress at various weights and postures for spine health.",
+  title : "This image shows how backpack forces affect spinal wellness and posture,linking excess weight to neck and back pain. Great for authors and speakers on self-care strategies and spine health."
 }]
 
 export const VIDEOS= [{

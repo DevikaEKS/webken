@@ -5,17 +5,14 @@ import AdditionalDetail from '../AdditionalDetail/AdditionalDetail';
 
 function BookPurchase() {
 
-    const getBookIdFromUrl = () => {
-    
+    const getBookIdFromUrl = () => { 
     const urlPath = window.location.pathname;
     const pathParts = urlPath.split('/');
     const bookId = pathParts[pathParts.length - 1]; 
     return bookId;
   };
 
-
-  const id = getBookIdFromUrl();
-   
+  const id = getBookIdFromUrl(); 
   const [productCount, setProductCount] = useState(1);
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -23,11 +20,9 @@ function BookPurchase() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFormat, setSelectedFormat] = useState(null);
   const [showFull, setShowFull] = useState(false);
-
   const description = book?.book_description || "No description available.";
   const words = description.trim().split(/\s+/);
   const wordCount = words.length;
-
   const shouldTruncate = wordCount > 500;
   const preview = words.slice(0, 400).join(" ");
   const remaining = words.slice(400).join(" ");
@@ -35,14 +30,11 @@ function BookPurchase() {
 
   useEffect(() => {
     setLoading(true);
-    
     axios.get(`http://localhost:3000/api/v1/admin/getBookById/${id}`)
       .then((res) => {
         if (res.data && res.data.book) {
           const bookData = res.data.book;
-          setBook(bookData);
-          
-          
+          setBook(bookData);    
           if (bookData.images && bookData.images.length > 0) {
           
             const imageArray = typeof bookData.images === 'string' 
@@ -108,15 +100,13 @@ function BookPurchase() {
 
   return (
     <div className="max-w-7xl mx-auto p-6 my-5 bg-white text-[#001040]">
-      <div className="flex flex-col md:flex-row gap-8">
-       
+      <div className="flex flex-col md:flex-row gap-8">  
         <div className="md:w-1/3">
           <div className="border border-[#BAB8B8] bg-[#F5F5F5] rounded-lg p-4 flex items-center justify-center">
             <img
               src={selectedImage ? `http://localhost:3000/${normalizeImagePath(selectedImage)}` : "https://via.placeholder.com/400x600"}
               alt={`${book.title} Cover`}
-              className="rounded  max-h-[500px] object-contain"
-            />
+              className="rounded  max-h-[500px] object-contain"/>
           </div>
           
           {images.length > 0 && (

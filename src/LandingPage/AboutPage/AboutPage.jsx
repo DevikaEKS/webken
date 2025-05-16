@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 function Aboutpage() {
 const navigate=useNavigate();
   const aboutpagepart = () => {
-    navigate("/about");
-  };
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  setTimeout(() => navigate("/about"), 100);
+};
   return (
     <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl py-20"> 
       <div className="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto items-start">
@@ -12,13 +13,13 @@ const navigate=useNavigate();
        
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h2 className="text-[54px] font-bold text-[#001040] mb-6">
-            About Me<span className="text-[#F99420]">.</span>
+            About me<span className="text-[#F99420]">.</span>
           </h2>
-          <p className="text-black font-medium leading-relaxed">
-            For more than 20 years, Dr. Ken Hansraj has dedicated his life to eradicating spinal problems. With an in-depth knowledge of and a vast experience in spine care, he has discovered and simplified the core factors and strategies that can be applied to improve the quality of spinal health. His work helps people to understand spine wellness, spinal conditions, and to augment people’s physical, mental and emotional well-being through the spine.
+          <p className="font-medium text-[#000000] text-[16px] md:text-[18px] leading-7 md:leading-8">
+           For more than 20 years, Dr. Ken Hansraj has dedicated his life to eradicating spinal problems. With in-depth knowledge and vast experience in spine care, he has discovered and simplified the core factors and strategies that can be applied to improve spinal health. His work helps people understand spine wellness and spinal conditions, and enhances their physical, mental, and emotional well-being through the spine. 
           </p>
-          <p className="text-black font-medium leading-relaxed mt-10">
-            Dr. Ken’s work has influenced people in every country to feel better and to do more. His studies on spine care costs, text neck and backpack forces have influenced global positions, and global trends.
+          <p className="font-medium text-[#000000] text-[16px] md:text-[18px] leading-7 md:leading-8 my-2">
+            Dr. Ken’s work has influenced people in every country to feel better and do more. His studies on spine care costs, text neck, and backpack forces have shaped global positions and trends.
           </p>
         </div>
 
@@ -26,17 +27,17 @@ const navigate=useNavigate();
         <div className="w-full md:w-1/2 flex justify-center items-start md:mt-10">
           <div className="relative bg-[#001040] text-white rounded-xl p-6 sm:p-8 w-full max-w-sm shadow-lg">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#fda101] mb-4">
-              Dr. Hansraj
+              Dr. Ken Hansraj
             </h1>
 
-            <ul className="list-disc list-inside text-white text-sm sm:text-base space-y-2">
-              <li>International Best selling author.</li>
-              <li>Global health consultant.</li>
-              <li>US Spine Surgeon</li>
+            <ul className="list-disc list-inside text-white text-sm sm:text-base space-y-2 font-normal">
+              <li>International Best-Selling Author.</li>
+              <li>Global Health Consultant.</li>
+              <li>U.S. Spine Surgeon</li>
             </ul>
 
             <div className="mt-6">
-              <button className="w-9 h-9 flex items-center justify-center rounded-full bg-white">
+              <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-white">
                 <img src="./arrow.png" alt="Arrow" className="w-4 h-4"  onClick={aboutpagepart}/>
               </button>
             </div>
@@ -44,7 +45,7 @@ const navigate=useNavigate();
         
             <div className="absolute -bottom-10 -right-3 md:-bottom-20 md:-right-4">
               <div className="w-[150px] h-[150px] md:w-[206px] md:h-[206px] rounded-full bg-gradient-to-tr from-orange-400 to-yellow-300 shadow-lg flex items-center justify-center border-4 border-white">
-                <img src="./spine.png" alt="Spine" className="w-[80px] h-[140px] md:w-[106px] md:h-[182px] object-contain" />
+                <img src="./spine.png" alt="Dr. Ken Hansraj - highlighting 20+ years of spinal care expertise" title="Dr. Ken Hansraj, global spine surgeon and author, with 20+ years of expertise treating back pain, text neck, and vertebrae issues—highlighted beside his credentials and spine illustration." className="w-[80px] h-[140px] md:w-[106px] md:h-[182px] object-contain" />
               </div>
             </div>
           </div>

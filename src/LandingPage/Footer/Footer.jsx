@@ -13,13 +13,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row w-full md:w-[75%] justify-between md:justify-center md:space-x-20 gap-y-10 md:gap-y-0 mt-8 md:mt-0">
           
           <div className="flex flex-col space-y-3">
-            <h1 className="font-helvetica font-bold text-[#FFA200] text-[20px] md:text-[24px]">
+            <h1 className="font-bold  text-[20px] md:text-[24px]" style={{color:"#ffa200"}}>
               Quick Links
             </h1>
             {Links.map((link) => (
               <a
                 key={link.id}
-                className="font-helvetica font-medium text-white text-[16px] md:text-[18px]"
+                className="font-medium text-white text-[16px] md:text-[18px] text-decoration-none"
                 href={link.link}
               >
                 {link.name}
@@ -29,7 +29,7 @@ export default function Footer() {
 
          
           <div className="flex flex-col space-y-3">
-            <h1 className="font-helvetica font-bold text-[#FFA200] text-[20px] md:text-[24px]">
+            <h1 className="font-bold  text-[20px] md:text-[24px]" style={{color:"#ffa200"}}>
               Contact Us
             </h1>
             {CONTACT_US.map((item) => {
@@ -60,7 +60,7 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="flex flex-col space-y-3">
-            <h1 className="font-helvetica font-bold text-[#FFA200] text-[20px] md:text-[24px]">
+            <h1 className="font-helvetica font-bold text-[20px] md:text-[24px]" style={{color:"#ffa200"}}>
               Follow Us
             </h1>
             <div className="flex space-x-3">

@@ -23,7 +23,7 @@ export default function BookPage() {
       }
     };
 
-    console.log(books)
+    
 
     fetchBooks();
   }, []);

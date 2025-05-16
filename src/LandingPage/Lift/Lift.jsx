@@ -3,7 +3,8 @@ export default function Lift() {
     <section className="py-10 px-4 flex flex-col  md:flex-row items-center justify-center w-full space-y-10 md:space-y-0 md:space-x-20">
       <img
         src="./Lift-book.png"
-        alt="Lift Book"
+        alt="Book cover of LIFT by Dr. Ken Hansraj, featuring meditations to enhance back health and spine wellness."
+        title="LIFT by Dr. Ken Hansraj offers guided meditations and techniques to support spinal strength, boost back health, and promote holistic healing from a renowned spine expert"
         className="w-[250px] md:w-[333px] h-auto rounded-lg object-contain"
       />
 

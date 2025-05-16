@@ -6,15 +6,14 @@ export default function BuyingBook() {
         <div className="flex flex-col items-center mb-8 lg:mb-0">
           <img 
             src="./spine-book.png"
-            alt="Keys to An Amazing Life: Secrets of The Cervical Spine"
+            alt="Book cover of Secrets of the Cervical Spine by Dr. Kenneth Hansraj, promoting spinal health."
+            title="Secrets of the Cervical Spine by Dr. Kenneth Hansraj reveals keys to spinal wellness and a vibrant life, focusing on cervical spine care for improved health and vitality."
             className="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[471px] h-auto"
           />
-          <button className="bg-[#FFA200] font-bold rounded-full w-full max-w-[162px] h-12 md:h-[59px] text-white mt-4 hover:bg-[#E69200] transition-colors">
+          <button >
             Buy Now
           </button>
         </div>
-        
-        
         <div className="flex flex-col max-w-3xl">
           <h1 className="font-bold mb-4 md:mb-6 lg:mb-10 text-2xl md:text-3xl lg:text-5xl text-[#001040]">
             Buy the Book<span className="text-[#F99420]">.</span>
@@ -27,10 +26,10 @@ export default function BuyingBook() {
 
           <div className="flex flex-col font-medium space-y-4 md:space-y-6 lg:space-y-10 text-sm md:text-base lg:text-lg text-black leading-relaxed tracking-wide">
             <p>
-              In 2017, American GDP was estimated at 19.4 trillion dollars. With spine care costing Americans 135 billion dollars per year in the USA, that means one in $144 GDP (0.7%) dollars is spent on spine care. Today, with this important book, internationally-renowned American spinal expert Dr.Kenneth Hansraj unlocks the secrets of your spine, and how learning to treat it with respect.
+             In 2017, American GDP was estimated at 19.4 trillion dollars. With spine care costing Americans 135 billion dollars per year in the USA, that means one in $144 GDP (0.7%) dollars is spent on spine care. Today, with this important book, internationally-renowned American spinal expert <strong>Dr. Kenneth Hansraj</strong>  unlocks the secrets of your spine, and how learning to treat it with respect.
             </p>
             <p>
-              This book will vastly improve your physical, emotional and even mental life. It's packed with brilliant illustrations, photographs and techniques for achieving optimal spinal and overall vibrant health! The most painful problem in America isn't the economy, trade, crime or foreign wars. It's our BACKS! Hansraj unlocks the influence of common everyday options that are good for spinal health and general health.
+             This book will vastly improve your physical, emotional and even mental life. It’s packed with brilliant illustrations, photographs and techniques for achieving optimal spinal and overall vibrant health! The most painful problem in America isn’t the economy, trade, crime or foreign wars. It’s our BACKS! Hansraj unlocks the influence of common everyday options that are good for spinal health and general health.
             </p>
           </div>
         </div>

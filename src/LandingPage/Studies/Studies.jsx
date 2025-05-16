@@ -20,7 +20,8 @@ export default function Studies() {
           >
             <img
               src={study.img}
-              alt={study.name}
+              alt={study.alt}
+              title={study.title}
               className="w-[300px] h-[150px] md:w-[447px] md:h-[211px] object-cover rounded-lg "
             />
             <p className="text-[20px] md:text-[32px] text-[#001040] mt-3 text-center">{study.name}</p>

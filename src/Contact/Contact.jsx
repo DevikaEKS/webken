@@ -3,7 +3,7 @@ import locationim from "../assets/location.png";
 import mailimg from "../assets/mail.png";
 import telimg from "../assets/telephone.png";
 import axios from 'axios';
-
+import "./Contact.css"
 function Contact() {
   const [formData, setFormData] = useState({
     full_name: '',
@@ -77,21 +77,21 @@ function Contact() {
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <img src={telimg} alt="Phone" className="w-5 h-5 mt-1 flex-shrink-0" />
-                <a href="tel:845-226-4590" className="text-[#001040] text-lg transition-colors">
+                <a href="tel:845-226-4590" className="linktxt text-lg transition-colors text-decoration-none">
                   845-226-4590
                 </a>
               </div>
 
               <div className="flex items-start space-x-3">
                 <img src={mailimg} alt="Email" className="w-5 h-5 mt-1 flex-shrink-0" />
-                <a href="mailto:DrKen@DrKen.us" className=" text-lg text-[#001040]  transition-colors">
-                  DrKen@DrKen.us
+                <a href="mailto:DrKen@DrKen.us" className="text-lg linktxt  transition-colors text-decoration-none">
+                 drken@drken.us
                 </a>
               </div>
 
               <div className="flex items-start space-x-3">
                 <img src={locationim} alt="Location" className="w-5 h-5 mt-1 flex-shrink-0" />
-                <a href="#" className="text-[#001040]  transition-colors text-lg">
+                <a href="#" className="linktxt  transition-colors text-lg text-decoration-none">
                   New York Office
                 </a>
               </div>
@@ -103,7 +103,7 @@ function Contact() {
         <div className="w-full lg:w-1/2 xl:w-5/12">
           <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg font-normal">
             <p className="text-center text-gray-600 mb-6">
-              For Author Inquiries, Please Send a Message
+              For Inquiries, Please Send a Message
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-4 p-3">

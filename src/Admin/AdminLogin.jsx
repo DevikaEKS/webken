@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Adminlogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+const navigate = useNavigate();
   const validate = async() => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^.{8,}$/;
@@ -28,6 +29,7 @@ function Adminlogin() {
 
     if(response.status === 200){
         toast.success('Login successful!');
+        navigate("/adminpage")
         return true;
     }else{
         toast.error(response.data.message)

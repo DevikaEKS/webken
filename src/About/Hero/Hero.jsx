@@ -17,8 +17,10 @@ export default function Hero() {
             <p className="text-[#F99420] font-medium">Spinal & Orthopedic Surgeon</p>
           </div>
           <p className="font-medium text-[#000000] text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] leading-tight md:leading-normal">
-            Kenneth K. Hansraj, M.D. is a spinal and orthopedic surgeon specializing in cervical, thoracic, and lumbar procedures. He performs knifeless surgery, bloodless spine surgery, minimally invasive approaches when possible, advanced bone grafting, techniques using spinal navigation to assess instrumentation placement, modern operating tables, spinal cord and nerve monitoring during spine surgery and uses stem cells in spine surgery. <br />
-            Dr. Ken believes in whole body wellness, preventative care, and that the spine is a principal indicator of general health impacted by "human software and hardware."
+            <strong>Kenneth Hansraj, M.D.</strong> is a spinal and orthopedic surgeon specializing in cervical, thoracic, and lumbar procedures. He performs knifeless surgery, bloodless spine surgery, and minimally invasive approaches when possible. He also utilizes advanced bone grafting techniques, spinal navigation to assess instrumentation placement, modern operating tables, and spinal cord and nerve monitoring during spine surgery. Additionally, he uses stem cells in spine surgery.
+          </p>
+          <p className="font-medium text-[#000000] text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] leading-tight md:leading-normal">
+            Dr. Ken believes in whole-body wellness, preventative care, and that the spine is a principal indicator of general health—impacted by both “human software and hardware.
           </p>
         </div>
       </div>

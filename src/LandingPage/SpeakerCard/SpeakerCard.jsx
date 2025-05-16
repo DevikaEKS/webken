@@ -9,8 +9,8 @@ export default function SpeakerCard() {
             Looking for a global <br className="hidden md:block" /> keynote speaker?
           </h1>
           <p className="font-medium text-black mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
-            Dr. Ken Hansraj helps the world by improving your physical, emotional and even mental life. <br className="hidden md:block" />
-            He’ll speak to your audience about achieving optimal spinal and overall vibrant health!
+          Dr. Ken Hansraj helps the world by improving your physical, emotional, and even mental life.
+He’ll speak to your audience about achieving optimal spinal and overall vibrant health!
           </p>
           <button className="bg-[#FFB200] text-white font-semibold py-3 px-6 rounded-full w-max shadow hover:bg-[#e5a200] transition">
             Contact Us
@@ -22,7 +22,8 @@ export default function SpeakerCard() {
           <div className="w-full max-w-[400px] h-[320px] md:h-[320px] rounded-l-full rounded-r-xl overflow-hidden">
             <img
               src="./docter-2.png"
-              alt="Dr. Ken Hansraj"
+              alt="Dr. Ken Hansraj offers keynote speaking on spinal wellness, emotional health and self-care strategies."
+              title="Dr. Ken Hansraj, author and speaker, promotes spine health, spinal wellness, and self-care strategies to reduce neck and back pain. Book him as a global keynote speaker for vibrant health insights"
               className="w-full h-full object-cover"
             />
           </div>

@@ -18,8 +18,8 @@ export async function sendThankYouEmail(to, name) {
     subject: 'Thank You for Contacting Us!',
     html: `
       <p>Hi <strong>${name}</strong>,</p>
-      <p>Thank you for reaching out. We have received your message and will get back to you shortly.</p>
-      <p>Best regards,<br/>The Team</p>
+      <p>Thank you for Reaching Out! </p>
+      <p>We have received your inquiry and will get back to you as soon as possible.</p>
     `,
   };
 

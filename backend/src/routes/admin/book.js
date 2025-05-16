@@ -6,7 +6,7 @@ const router = Router();
 
 router.post("/addBook",upload.array('images',5),handleCreateBook)
 router.get("/getBooks",handleGetAllBooks)
-router.put("/updateBook/:id",handleUpdateBook)
+router.put("/updateBook/:id",upload.array('images',5),handleUpdateBook)
 router.delete("/deleteBook/:id",handleDeleteBook)
 router.get("/getBookById/:id",handleGetBookById)
 

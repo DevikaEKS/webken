@@ -12,3 +12,8 @@
 .curvedarea label{
 color: #ffa200;
 }
+.txt{
+  line-height: 50px;
+  font-size: 40px !important;
+  text-align: left;
+}

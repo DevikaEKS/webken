@@ -73,10 +73,8 @@ function Userregistration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const hasErrors = Object.values(errors).some((msg) => msg !== '');
     const isEmptyField = Object.values(formData).some((v) => v.trim() === '');
-
     if (hasErrors || isEmptyField) {
       toast.error('Please fix the errors before submitting.');
       return;
@@ -117,8 +115,7 @@ function Userregistration() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md"
-      >
+        className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-[#001040] mb-6">
           User Registration
         </h2>
@@ -168,8 +165,7 @@ function Userregistration() {
           type="password"
           value={formData.password}
           onChange={handleChange}
-          error={errors.password}
-        />
+          error={errors.password}/>
 
         {/* Retype Password */}
         <InputField
@@ -178,8 +174,7 @@ function Userregistration() {
           type="password"
           value={formData.retypePassword}
           onChange={handleChange}
-          error={errors.retypePassword}
-        />
+          error={errors.retypePassword}/>
 
         <button
           type="submit"

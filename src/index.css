@@ -11,8 +11,13 @@ body,html{
     font-family: "Montserrat", "Arial", sans-serif;
     font-weight: 700;
 }
+
 button{
+    background-color: #ffa200;
+    color: #ffff;
+    border-radius: 5px !important;
     cursor: pointer;
+    padding:8px;
 }
 
 .montserrat-main {
@@ -21,3 +26,5 @@ button{
   font-weight: 700;
   font-style: normal;
 }
+
+

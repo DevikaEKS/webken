@@ -1,9 +1,12 @@
 import { createBook,deleteBook,getBookById,getBooks, updateBook } from "../services/book-service.js";
-
+import { pool } from "../config/db.js";
+import path from "path"
 
 export async function handleCreateBook(req, res) {
   try {
     const bookData = req.body;
+
+    console.log(bookData.images)
 
     
     if (!bookData.title) {
@@ -43,21 +46,64 @@ export async function handleGetAllBooks(req, res) {
   }
 }
 
-export async function handleUpdateBook(req,res){
-    const bookId = req.params.id;
-    const bookData = req.body;
-    try {
-        const result = await updateBook(bookId,bookData);
+export async function handleUpdateBook(req, res) {
+  const bookId = req.params.id;
+  const bookData = req.body;
+  
+  
+  const newUploadedImages = req.files.map(file => file.path.replace(/\\/g, '\\\\')); 
+  
+  try {
+   
+    const [rows] = await pool.execute(`SELECT images FROM book WHERE id = ?`, [bookId]);
 
-        if(result.affectedRows === 0){
-            return res.status(404).json({ message: "Book not found" });
-        }
-        return res.status(200).json({ message: "Book updated successfully" });
-    } catch (error) {
-         console.error("Error updating book:", error);
-        return res.status(500).json({ error: "Internal Server Error" });
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "Book not found" });
     }
+    
+ 
+    const existingImages = JSON.parse(JSON.stringify(rows[0].images) || '[]');
+    
+   
+    const maxImages = 5;
+    const availableSlots = maxImages - existingImages.length;
+    
+    if (availableSlots <= 0) {
+      return res.status(400).json({ 
+        message: "Cannot add more images. Maximum limit of 5 images has been reached." 
+      });
+    }
+    
+    
+    const imagesToAdd = newUploadedImages.slice(0, availableSlots);
+    
+    if (imagesToAdd.length < newUploadedImages.length) {
+      
+      console.log(`Only ${imagesToAdd.length} out of ${newUploadedImages.length} images were added due to the 5-image limit`);
+    }
+    
+    // Combine existing and new images
+    const updatedImages = [...existingImages, ...imagesToAdd];
+    
+    // Update the book with the new data including images
+    const result = await updateBook(bookId, {
+      ...bookData,
+      images: updatedImages,
+    });
+
+    return res.status(200).json({ 
+      message: "Book updated successfully",
+      imagesAdded: imagesToAdd.length,
+      totalImages: updatedImages.length,
+      maxImagesAllowed: maxImages
+    });
+  } catch (error) {
+    console.error("Error updating book:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 }
+
+
 
 export async function handleDeleteBook(req,res){
     const bookId = req.params.id;
