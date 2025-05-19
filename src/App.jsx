@@ -29,12 +29,13 @@ import AdminBookForm from "./Admin/AdminBookForm/AdminBookForm"
 import Admindatapage from "./Admin/Admindatapage/Admindatapage"
 import ViewBooks from "./Admin/ViewBooks/ViewBooks"
 import Updatebookdetails from "./Admin/Bookdetails/Updatebookdetails"
-import Drkenhome from "./Drkenlms/Drkenhome/Drkenhome"
+import Drkenhome from "./Drken/Drkenhomepage/Drkenhome"
 import "bootstrap/dist/css/bootstrap.css"
-import Drmenubar from "./Drkenlms/Drmenubar/Drmenubar"
+import Drmenubar from "./Drken/Drmenubar/Drmenubar"
 import Testimonialpart from "./Testimonialpart/Testimonialpart"
 import Addblog from "./Blog/Addblog/Addblog"
 import Updateblog from "./Blog/Updateblog/Updateblog"
+import Blogs from "./Blog/RenderBlog/RenderBlog"
 
 function App() {
   return (
@@ -57,8 +58,7 @@ function App() {
         <Route path="/myspinecoach" element={[<Drmenubar/>,<Drkenhome/>]}/>
         <Route path="/addblog" element={<Addblog/>}/>
          <Route path="/updateblog" element={<Updateblog/>}/>
-      {/* 
-      */}
+         <Route path="/renderblog" element={<Blogs/>} />
       </Routes>
    </Router>
   )

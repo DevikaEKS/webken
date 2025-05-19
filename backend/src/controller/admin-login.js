@@ -1,4 +1,7 @@
 import { adminLogin } from "../services/admin-login-service.js";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = "your_jwt_secret";
 
 
 export async function handleAdminLogin(req,res){
@@ -15,7 +18,16 @@ export async function handleAdminLogin(req,res){
         const result = await adminLogin(loginData);
 
         if (result.success) {
-            return res.status(200).json({ message: "Login successful", admin: result.admin });
+            const admin = result.admin;
+
+            console.log(admin)
+            const token = jwt.sign({ id: admin.id }, JWT_SECRET, { expiresIn: "1d" });
+            
+           return res.status(200).json({
+                message: "Login successful",
+                admin: { id: admin.id, username: admin.username },
+                token
+        });
         } else {
             return res.status(401).json({ message: result.message });
         }

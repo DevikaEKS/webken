@@ -7,36 +7,59 @@ import { useNavigate } from 'react-router-dom';
 function Adminlogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-const navigate = useNavigate();
-  const validate = async() => {
+  const navigate = useNavigate();
+
+  const validate = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^.{8,}$/;
 
     if (!emailRegex.test(username)) {
-      toast.error('Invalid email format');
+      toast.error('Invalid email format', {
+        position: 'top-center',
+        autoClose: 3000,
+      });
       return false;
     }
 
     if (!passwordRegex.test(password)) {
-      toast.error('Password must be at least 8 characters');
+      toast.error('Password must be at least 8 characters', {
+        position: 'top-center',
+        autoClose: 3000,
+      });
       return false;
     }
 
-    const response = await axios.post("http://localhost:3000/api/v1/admin/login",{
+    try {
+      const response = await axios.post("http://localhost:3000/api/v1/admin/login", {
         username,
         password
-    })
+      });
 
-    if(response.status === 200){
-        toast.success('Login successful!');
-        navigate("/adminpage")
+      if (response.status === 200) {
+        // Save the token to localStorage as 'admin-token'
+        localStorage.setItem('admin-token', response.data.token);
+        
+        // Show success toast
+        toast.success('Login successful!', {
+          position: 'top-center',
+          autoClose: 3000,
+          onClose: () => navigate("/adminpage") // Navigate after toast closes
+        });
         return true;
-    }else{
-        toast.error(response.data.message)
+      } else {
+        toast.error(response.data.message || 'Login failed', {
+          position: 'top-center',
+          autoClose: 3000,
+        });
+        return false;
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'An error occurred during login', {
+        position: 'top-center',
+        autoClose: 3000,
+      });
+      return false;
     }
-
-    
-    
   };
 
   const handleSubmit = (e) => {
@@ -79,7 +102,7 @@ const navigate = useNavigate();
         </button>
       </form>
 
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 }

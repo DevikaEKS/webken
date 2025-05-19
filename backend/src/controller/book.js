@@ -1,6 +1,6 @@
 import { createBook,deleteBook,getBookById,getBooks, updateBook } from "../services/book-service.js";
 import { pool } from "../config/db.js";
-import path from "path"
+
 
 export async function handleCreateBook(req, res) {
   try {

@@ -4,7 +4,7 @@ import adminRoutes from "./src/routes/admin/book.js"
 import adminLogin from "./src/routes/admin/login.js"
 import userRegister from "./src/routes/user/register.js"
 import userLogin from "./src/routes/user/login.js"
-import { authenticateToken } from "./src/middleware/authmiddleware.js"
+import { authenticateAdmin, authenticateToken } from "./src/middleware/authmiddleware.js"
 import { getCurrentUser } from "./src/controller/user-controller.js"
 import cors from "cors"
 
@@ -20,6 +20,16 @@ app.use(cors({
 }))
 
 app.use(express.json())
+
+
+
+
+
+
+
+
+
+//This is our backend
 app.use("/api/v1/user",userRoute)
 app.use("/api/v1/admin",adminRoutes)
 app.use("/api/v1/admin",adminLogin)
