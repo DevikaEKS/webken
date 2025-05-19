@@ -1,22 +1,28 @@
 import { useState } from "react";
 import { Links } from "../../utils/Links";
 import "./Navbar.css";
-export default function Navbar() {
-const [isOpen, setIsOpen] = useState(false);
 
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="bg-[#001040] w-full">
-      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-10 py-4">      
-        <div className="w-[200px] sm:w-[296px] h-[40px] sm:h-[52px]">
+      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-10 md:px-16 lg:px-20 py-4">
+        <div className="w-[150px] sm:w-[200px] md:w-[250px] lg:w-[296px] h-[32px] sm:h-[40px] md:h-[48px] lg:h-[52px]">
           <img
             src="/image 66.png"
             alt="Logo"
-            className="w-full h-full object-contain"/>
-        </div> 
+            className="w-full h-full object-contain"
+          />
+        </div>
+
         <button
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
           className="sm:hidden text-white focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}>
+          onClick={() => setIsOpen(!isOpen)}
+        >
           <svg
             className="w-6 h-6"
             fill="none"
@@ -41,22 +47,24 @@ const [isOpen, setIsOpen] = useState(false);
           </svg>
         </button>
 
-       
         <div className="hidden sm:flex gap-6">
           {Links.map((link) => (
             <a
               key={link.id}
               href={link.link}
-              className="lnknav text-[14px] sm:text-[16px] font-normal  duration-300 montserrat-main">
+              className="lnknav text-[14px] sm:text-[16px] font-normal duration-300 montserrat-main"
+            >
               {link.name}
             </a>
           ))}
         </div>
       </div>
 
-     
       {isOpen && (
-        <div className="sm:hidden flex flex-col items-center gap-4 pb-4">
+        <div
+          id="mobile-menu"
+          className="sm:hidden flex flex-col items-center gap-4 pb-4"
+        >
           {Links.map((link) => (
             <a
               key={link.id}

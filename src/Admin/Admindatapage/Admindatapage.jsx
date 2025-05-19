@@ -86,7 +86,10 @@ useEffect(() => {
           Books
         </button>
         <button
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/")
+            localStorage.removeItem("admin-token")
+          }}
           className="px-4 py-2 text-red-600 rounded cursor-pointer">
           Logout
         </button>

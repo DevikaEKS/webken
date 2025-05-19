@@ -35,30 +35,36 @@ import Drmenubar from "./Drken/Drmenubar/Drmenubar"
 import Testimonialpart from "./Testimonialpart/Testimonialpart"
 import Addblog from "./Blog/Addblog/Addblog"
 import Updateblog from "./Blog/Updateblog/Updateblog"
-import Blogs from "./Blog/RenderBlog/RenderBlog"
+import Blogs from "./Blog/RenderBlog/RenderBlogs"
+import ProtectedRoute from "./ProtectedRoute"
+import UpdateBlogPage from "./Blog/RenderBlog/UpdateBlog"
+import AddYoutubeData from "./Admin/Youtube/AddYoutube"
 
 function App() {
   return (
    <Router>
       <Routes>
         <Route path="/register" element={[<Userregistration/>]} />
-        <Route path="/login" element={[<UserLogin/>]} />
-        <Route path="/admin/login" element={[<Adminlogin/>]}/>
-        <Route path="/admin/book" element={[<AdminBookForm/>]} />
-        <Route path="bookupdate/:id" element={[<Updatebookdetails/>]}/>
+        <Route path="/login" element={[<UserLogin/>]} /> 
         <Route path="/" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Testimonialpart/>,<Footer/>]} />
         <Route path="/about" element={[<Navbar/>,<Hero/>,<AboutSection/>,<Work/>,<Footer/>]} />
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />
         <Route path="/book" element={[<Navbar/>,<BookPage />,<Footer/>]} />
         <Route path="/book/:title" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
         <Route path="/contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
-        <Route path="/adminpage" element={[<Navbar/>,<Admindatapage/>]}/>
         <Route path="*" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Testimonialpart/>,<Footer/>]} />
         <Route path="/bookarea" element={<ViewBooks/>}/>
         <Route path="/myspinecoach" element={[<Drmenubar/>,<Drkenhome/>]}/>
-        <Route path="/addblog" element={<Addblog/>}/>
-         <Route path="/updateblog" element={<Updateblog/>}/>
-         <Route path="/renderblog" element={<Blogs/>} />
+
+        <Route path="/addblog" element={[<ProtectedRoute><Addblog/></ProtectedRoute>]}/>
+        <Route path="/admin/login" element={[<Adminlogin/>]}/>
+        <Route path="/adminpage" element={[<Navbar/>,<ProtectedRoute><Admindatapage/></ProtectedRoute>]}/>
+        <Route path="/admin/book" element={[<ProtectedRoute><AdminBookForm/></ProtectedRoute>]} />
+        <Route path="/updateblog" element={[<ProtectedRoute><Updateblog/></ProtectedRoute>]}/>
+        <Route path="/renderblog" element={[<ProtectedRoute><Blogs/></ProtectedRoute>]} />
+        <Route path="/bookupdate/:blogId" element={[<ProtectedRoute><Updatebookdetails/></ProtectedRoute>]}/>
+        <Route path="/renderblog/:blogId" element={[<ProtectedRoute><UpdateBlogPage/></ProtectedRoute>]} />
+        <Route path="/admin/youtube" element={[<ProtectedRoute><AddYoutubeData/></ProtectedRoute>]} />
       </Routes>
    </Router>
   )

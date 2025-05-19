@@ -18,7 +18,7 @@ export default function AboutCard({ title, items, className }) {
       <ul className="space-y-6 md:space-y-10">
         {items.map((item, index) => (
           <li key={index} className="relative pl-5 flex flex-col">
-            <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-[#FEB331]"></div>
+            <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-[#FEB331] lg:mt-4 mt-10"></div>
             <h3 className="text-base md:text-[20px] text-black mb-2 md:mb-3">
               {item.title}
             </h3>

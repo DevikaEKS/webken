@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -38,13 +39,15 @@ export default function Blogs() {
   }
 
   return (
+
     <div className="container my-5">
       <h2 className="mb-4">All Blogs</h2>
       {blogs.length === 0 ? (
         <p>No blogs found.</p>
       ) : (
         blogs.map((blog) => (
-          <div key={blog.id} className="card mb-4 shadow-sm">
+          <Link to={`/renderblog/${blog.id}`}>
+            <div key={blog.id} className="card mb-4 shadow-sm">
             <div className="card-body">
               <h4 className="card-title">{blog.title}</h4>
               <div
@@ -56,6 +59,8 @@ export default function Blogs() {
               </p>
             </div>
           </div>
+          </Link>
+          
         ))
       )}
     </div>

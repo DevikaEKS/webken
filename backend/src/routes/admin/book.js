@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { handleCreateBook, handleDeleteBook, handleGetAllBooks, handleGetBookById, handleUpdateBook } from "../../controller/book.js";
-import { handleCreatBlog,handleAllBlogs } from "../../controller/blog.js";
+import { handleCreatBlog,handleAllBlogs, getParticularBlog, updateBlogController } from "../../controller/blog.js";
 import upload from "../../middleware/multer-config.js";
 import { authenticateAdmin } from "../../middleware/authmiddleware.js";
+import { addYoutubeHandler,deleteYoutubeVideoHandler,getYoutubeVideosHandler } from "../../controller/youtube.js";
 
 const router = Router();
 
@@ -36,5 +37,12 @@ router.get("/getBookById/:id",handleGetBookById)
 router.post("/addBlog",authenticateAdmin,handleCreatBlog)
 
 router.get("/blogs",authenticateAdmin,handleAllBlogs)
+router.get("/blog/:blogId",authenticateAdmin,getParticularBlog)
+router.put("/blog/:blogId",authenticateAdmin,updateBlogController)
+
+
+router.post("/addYoutubeVideo",authenticateAdmin,addYoutubeHandler)
+router.get("/getYoutubeVideo",getYoutubeVideosHandler)
+router.delete("/deleteYoutubeVideo/:youtubeId",authenticateAdmin,deleteYoutubeVideoHandler)
 
 export default router
