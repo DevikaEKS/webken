@@ -20,6 +20,7 @@ function BookPurchase() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFormat, setSelectedFormat] = useState(null);
   const [showFull, setShowFull] = useState(false);
+  const [bookReviews,setBookReviews] = useState([])
   const description = book?.book_description || "No description available.";
   const words = description.trim().split(/\s+/);
   const wordCount = words.length;
@@ -61,6 +62,16 @@ function BookPurchase() {
         setLoading(false);
       });
   }, [id]); 
+
+  async function gettingBookReviews(){
+    const response = await axios.get(`http://localhost:3000/api/v1/admin/reviews/${id}`);
+
+    setBookReviews(response.data.reviews)
+  }
+
+  useEffect(() => {
+    gettingBookReviews()
+  },[])
 
   const increaseCount = () => {
     setProductCount(prev => prev + 1);
@@ -191,7 +202,7 @@ function BookPurchase() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <button className="bg-[#ffa200]  text-white px-5 py-2 rounded-full font-semibold border border-gray-400">
+            <button className="bg-[#ffa200]  text-white px-5 py-2  font-semibold border border-gray-400">
               Buy Now
             </button>
             <div className="flex items-center px-5 py-2 rounded-full border border-gray-600 bg-gray-100 text-black">
@@ -235,7 +246,7 @@ function BookPurchase() {
     </div>
         </div>
       </div>
-      <AdditionalDetail editorial_review={book.editorial_review} about_author={book.about_author}/>
+      <AdditionalDetail editorial_review={book.editorial_review} about_author={book.about_author} bookReviews={bookReviews} bookname={book.title}/>
     </div>
   );
 }

@@ -4,16 +4,16 @@ export default function LatestBook() {
       
       
       <div className="flex flex-col md:ml-10 max-w-3xl">
-        <h1 className="font-bold text-3xl mb-10 md:text-4xl lg:text-[48px] text-[#001040]">
+        <h1 className="headingarea">
           The Latest Book<span className="text-[#F99420]">.</span>
         </h1>
 
-        <div className="flex flex-col font-bold text-xl md:text-3xl lg:text-[40px] text-[#E00000] leading-10 mb-10 space-y-1">
+        <div className="flex flex-col font-bold text-xl md:text-3xl lg:text-[40px] text-[#E00000] mb-5 ">
           <p>Watch Your Back: Nine Proven Strategies to Reduce Your Neck and Back Pain Without Surgery</p>
          
         </div>
 
-        <div className="mt-5 flex font-medium flex-col space-y-6 text-[16px] md:text-[18px] text-[#000000] leading-7 tracking-wide">
+        <div className=" flex flex-col space-y-6 text-[16px] md:text-[18px]   tracking-wide">
           <p>
            A self-care guide for better back health—and overall well-being—with nine essential strategies to support your neck and spine.
           </p>

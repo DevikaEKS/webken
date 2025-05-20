@@ -39,7 +39,7 @@ export default function Form() {
   };
 
   return (
-    <div className="w-full max-w-[442px] mx-auto px-7 bg-white rounded-2xl shadow-lg">
+    <div className="w-full max-w-[442px] mx-auto px-7 bg-white rounded-2xl shadow-md">
       <h2 className="text-center text-[20px] font-bold text-[#001040] mb-6">Drop your thoughts below!</h2>
 
       <form className="space-y-5 font-medium" onSubmit={handleSubmit}>

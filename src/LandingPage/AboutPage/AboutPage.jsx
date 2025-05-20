@@ -11,14 +11,14 @@ const navigate=useNavigate();
       <div className="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto items-start">
         
        
-        <div className="w-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-[54px] font-bold text-[#001040] mb-6">
+        <div className="w-full md:w-1/2 text-center text-md-start">
+          <h2 className="headingarea mb-6">
             About me<span className="text-[#F99420]">.</span>
           </h2>
-          <p className="font-medium text-[#000000] text-[16px] md:text-[18px] leading-7 md:leading-8">
+          <p className=" text-[16px] md:text-[18px] leading-7 md:leading-8">
            For more than 20 years, Dr. Ken Hansraj has dedicated his life to eradicating spinal problems. With in-depth knowledge and vast experience in spine care, he has discovered and simplified the core factors and strategies that can be applied to improve spinal health. His work helps people understand spine wellness and spinal conditions, and enhances their physical, mental, and emotional well-being through the spine. 
           </p>
-          <p className="font-medium text-[#000000] text-[16px] md:text-[18px] leading-7 md:leading-8 my-2">
+          <p className=" text-[16px] md:text-[18px] leading-7 md:leading-8 my-2">
             Dr. Ken’s work has influenced people in every country to feel better and do more. His studies on spine care costs, text neck, and backpack forces have shaped global positions and trends.
           </p>
         </div>

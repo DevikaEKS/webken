@@ -1,16 +1,55 @@
-import Form from "../Form/Form"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Blog() {
-    return (
-        <section className="py-10  sm:px-8 md:px-16  flex flex-col sm:flex-row justify-center items-center space-y-10 sm:space-y-0">
-            <div className="flex flex-col justify-center items-center sm:items-start space-y-10 mx-5 shadow-lg p-3">
-                <h1 className="font-semibold text-[24px] sm:text-[32px] text-[#001040] text-center sm:text-left">Spine Care Cost</h1>
-                <img src="./blog-image.png" className="w-full max-w-[802px] h-auto" alt="Blog Image" />
-                <p className="text-black font-medium max-w-[802px] text-[16px] sm:text-[18px] leading-8 text-center sm:text-left">
-                   In 2017, the American GDP was estimated at approximately $19.4 trillion. With spine care costing $135 billion per year in the USA, that means approximately one in every $144 GDP dollars is spent on spine care. The 2017 world GDP was estimated at $79.6 trillion. Extrapolating the same (1/144) ratio, global spine care costs would be $553 billion (0.7% of GDP). However, if the world spends at a rate of one-half the American rate (1/288), then the costs are approximately $276 billion (0.35% of GDP).
-                </p>
-            </div>
-            <Form />
-        </section>
-    )
+  const [blogs, setBlogs] = useState([]);
+
+  async function getBlog() {
+    try {
+      const response = await axios.get("http://localhost:3000/api/v1/admin/blogs");
+      setBlogs(response.data.blogs);
+    } catch (err) {
+      console.error("Error fetching blogs:", err);
+    }
+  }
+
+  useEffect(() => {
+    getBlog();
+  }, []);
+
+  const getPreview = (html) => {
+    const text = html.replace(/<[^>]+>/g, ""); // strip HTML
+    return text.length > 200 ? text.slice(0, 200) + "..." : text;
+  };
+
+  return (
+    <section className="py-10 sm:px-8 md:px-16 flex flex-col sm:flex-row justify-center items-start gap-10">
+      <div className="w-full sm:w-2/3">
+        <h1 className="font-semibold text-[24px] sm:text-[32px] text-[#001040] mb-6">All Blogs</h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-40">
+          {blogs.map((blog) => (
+            <Link
+              to={`/blog/${blog.id}`}
+              className="mt-4 text-inherit text-decoration-none" 
+              key={blog.id}
+            >
+              <div className="bg-white border rounded-xl shadow-md p-4 flex flex-col justify-between h-[400px] w-[300px] overflow-hidden">
+                <img
+                  src="/blog.jpg"
+                  alt="Default Blog"
+                  className="w-full h-40 object-cover rounded-md mb-3"
+                />
+                <div className="flex-grow">
+                  <h2 className="text-lg font-semibold mb-3 text-black">{blog.title}</h2>
+                  <p className="text-gray-700 text-sm line-clamp-3">{getPreview(blog.content)}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

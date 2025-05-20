@@ -10,12 +10,12 @@ export default function BuyingBook() {
             title="Secrets of the Cervical Spine by Dr. Kenneth Hansraj reveals keys to spinal wellness and a vibrant life, focusing on cervical spine care for improved health and vitality."
             className="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[471px] h-auto"
           />
-          <button >
+          <button  className="contactbtn px-4">
             Buy Now
           </button>
         </div>
         <div className="flex flex-col max-w-3xl">
-          <h1 className="font-bold mb-4 md:mb-6 lg:mb-10 text-2xl md:text-3xl lg:text-5xl text-[#001040]">
+          <h1 className="font-bold headingarea">
             Buy the Book<span className="text-[#F99420]">.</span>
           </h1>
 
@@ -24,7 +24,7 @@ export default function BuyingBook() {
             <p>The Cervical Spine</p>
           </div>
 
-          <div className="flex flex-col font-medium space-y-4 md:space-y-6 lg:space-y-10 text-sm md:text-base lg:text-lg text-black leading-relaxed tracking-wide">
+          <div className="flex flex-col  space-y-4 md:space-y-6 lg:space-y-10 text-sm md:text-base lg:text-lg text-black leading-relaxed tracking-wide">
             <p>
              In 2017, American GDP was estimated at 19.4 trillion dollars. With spine care costing Americans 135 billion dollars per year in the USA, that means one in $144 GDP (0.7%) dollars is spent on spine care. Today, with this important book, internationally-renowned American spinal expert <strong>Dr. Kenneth Hansraj</strong>  unlocks the secrets of your spine, and how learning to treat it with respect.
             </p>

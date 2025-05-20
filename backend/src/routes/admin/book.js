@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { handleCreateBook, handleDeleteBook, handleGetAllBooks, handleGetBookById, handleUpdateBook } from "../../controller/book.js";
-import { handleCreatBlog,handleAllBlogs, getParticularBlog, updateBlogController } from "../../controller/blog.js";
+import { handleCreatBlog,handleAllBlogs, getParticularBlog, updateBlogController,deleteBlogController } from "../../controller/blog.js";
 import upload from "../../middleware/multer-config.js";
 import { authenticateAdmin } from "../../middleware/authmiddleware.js";
 import { addYoutubeHandler,deleteYoutubeVideoHandler,getYoutubeVideosHandler } from "../../controller/youtube.js";
+import { addTestimonialHandler,getTestimonialHandler } from "../../controller/testimonial.js";
+import { addReviewHandler, getReviewsHandler } from "../../controller/review.js";
 
 const router = Router();
 
@@ -34,11 +36,21 @@ router.get("/getBooks",handleGetAllBooks)
 router.put("/updateBook/:id",upload.array('images',5),handleUpdateBook)
 router.delete("/deleteBook/:id",handleDeleteBook)
 router.get("/getBookById/:id",handleGetBookById)
-router.post("/addBlog",authenticateAdmin,handleCreatBlog)
 
-router.get("/blogs",authenticateAdmin,handleAllBlogs)
-router.get("/blog/:blogId",authenticateAdmin,getParticularBlog)
+
+
+router.post("/addBlog",authenticateAdmin,handleCreatBlog)
+router.get("/blogs",handleAllBlogs)
+router.get("/blog/:blogId",getParticularBlog)
+router.delete("/blog/:blogId",authenticateAdmin,deleteBlogController)
 router.put("/blog/:blogId",authenticateAdmin,updateBlogController)
+
+
+router.post("/testimonial",authenticateAdmin,addTestimonialHandler)
+router.get("/testimonial",getTestimonialHandler)
+
+router.post("/reviews",authenticateAdmin,addReviewHandler)
+router.get("/reviews/:bookId",getReviewsHandler)
 
 
 router.post("/addYoutubeVideo",authenticateAdmin,addYoutubeHandler)

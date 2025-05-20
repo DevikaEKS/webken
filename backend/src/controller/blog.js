@@ -1,4 +1,4 @@
-import { createBlog,getBlog,getBlogs,updateBlog } from "../services/blog.js";
+import { createBlog,getBlog,getBlogs,updateBlog,deleteBlog } from "../services/blog.js";
 
 export const handleCreatBlog = async(req,res) => {
      try {
@@ -10,7 +10,7 @@ export const handleCreatBlog = async(req,res) => {
     }
 
     const blog = await createBlog(adminId, title, content);
-    res.status(201).json({
+    res.status(200).json({
         message : "Created Successfully",
         blog : blog
     });
@@ -22,10 +22,10 @@ export const handleCreatBlog = async(req,res) => {
 
 export const  handleAllBlogs = async(req,res) => {
   try{
-    const adminId = req.adminId;
-    const blogs = await getBlogs(adminId);
+    
+    const blogs = await getBlogs();
     res.status(201).json({
-        message : "Created Successfully",
+        message : "Got All Blogs",
         blogs : blogs
     });
   }catch(error){
@@ -35,13 +35,13 @@ export const  handleAllBlogs = async(req,res) => {
 }
 
 export const getParticularBlog = async (req, res) => {
-  const adminId = req.adminId;
+  
   const { blogId } = req.params;
 
 
-  console.log(adminId,blogId)
+  
   try {
-    const blog = await getBlog(adminId, blogId);
+    const blog = await getBlog(blogId);
 
     if (!blog) {
       return res.status(404).json({ message: 'Blog not found' });
@@ -79,3 +79,26 @@ export const updateBlogController = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+
+export const deleteBlogController = async(req,res) => {
+  const { blogId } = req.params
+  const adminId = req.adminId
+
+  
+  if (!blogId || !adminId) {
+    return res.status(400).json({ message: 'blogId and adminId are required ' });
+  }
+
+  try{
+    const result = await deleteBlog({ blogId,adminId })
+
+    if(!result){
+      return res.status(404).json({ message: 'Blog not deleted' });
+    }
+    res.status(200).json({ message: 'Blog deleted successfully' });
+  }catch(error){
+    console.error('Error updating blog:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}

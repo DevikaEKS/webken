@@ -15,19 +15,18 @@ export const createBlog = async (adminId, title, content) => {
 };
 
 
-export const getBlogs = async(adminId) => {
+export const getBlogs = async() => {
   const [result] = await pool.execute(
-    `SELECT * FROM blog WHERE admin_id = ?`,
-    [adminId]
+    `SELECT * FROM blog`,
   )
   
   return result
 }
 
-export const getBlog = async (adminId, blogId) => {
+export const getBlog = async (blogId) => {
   const [result] = await pool.execute(
-    `SELECT * FROM blog WHERE admin_id = ? AND id = ?`,
-    [adminId, blogId]
+    `SELECT * FROM blog WHERE id = ?`,
+    [blogId]
   );
   return result[0]; 
 };
@@ -41,3 +40,12 @@ export const updateBlog = async (adminId, blogId, { title, content }) => {
   );
   return result.affectedRows > 0; // returns true if update succeeded
 };
+
+export const deleteBlog = async({ blogId,adminId}) =>{
+  const [ result ] = await pool.execute(
+    `DELETE FROM blog where id = ? AND admin_id = ?`,
+    [blogId,adminId]
+  )
+
+  return result.affectedRows > 0
+}

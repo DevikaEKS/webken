@@ -25,7 +25,7 @@ export default function OurVideos() {
 
   return (
     <section className="py-10 px-4 flex flex-col items-center space-y-10">
-      <h1 className="text-3xl md:text-4xl lg:text-[48px] text-[#001040] text-center">
+      <h1 className="headingarea text-center py-4">
         Our Videos
       </h1>
 

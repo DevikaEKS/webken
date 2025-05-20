@@ -39,6 +39,9 @@ import Blogs from "./Blog/RenderBlog/RenderBlogs"
 import ProtectedRoute from "./ProtectedRoute"
 import UpdateBlogPage from "./Blog/RenderBlog/UpdateBlog"
 import AddYoutubeData from "./Admin/Youtube/AddYoutube"
+import BlogPreview from "./Blog/BlogPreview/BlogPreview"
+import Reviews from "./Admin/Review/Testimonial/Testimonial"
+import Mainbanner from "./LandingPage/Banner/Banner"
 
 function App() {
   return (
@@ -46,13 +49,14 @@ function App() {
       <Routes>
         <Route path="/register" element={[<Userregistration/>]} />
         <Route path="/login" element={[<UserLogin/>]} /> 
-        <Route path="/" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Testimonialpart/>,<Footer/>]} />
+        <Route path="/" element={[<Navbar/>,<Mainbanner/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
         <Route path="/about" element={[<Navbar/>,<Hero/>,<AboutSection/>,<Work/>,<Footer/>]} />
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />
+        <Route path="/blog/:blogId" element={[<Navbar/>,<BlogPreview/>,<Footer/>]} />
         <Route path="/book" element={[<Navbar/>,<BookPage />,<Footer/>]} />
         <Route path="/book/:title" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
         <Route path="/contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
-        <Route path="*" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Testimonialpart/>,<Footer/>]} />
+        <Route path="*" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
         <Route path="/bookarea" element={<ViewBooks/>}/>
         <Route path="/myspinecoach" element={[<Drmenubar/>,<Drkenhome/>]}/>
 
@@ -65,6 +69,7 @@ function App() {
         <Route path="/bookupdate/:blogId" element={[<ProtectedRoute><Updatebookdetails/></ProtectedRoute>]}/>
         <Route path="/renderblog/:blogId" element={[<ProtectedRoute><UpdateBlogPage/></ProtectedRoute>]} />
         <Route path="/admin/youtube" element={[<ProtectedRoute><AddYoutubeData/></ProtectedRoute>]} />
+        <Route path="/admin/review" element={[<ProtectedRoute><Reviews/></ProtectedRoute>]} />
       </Routes>
    </Router>
   )
