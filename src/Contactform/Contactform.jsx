@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import "./Contactform.css";
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Contactform() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
   });
 
@@ -33,14 +34,15 @@ function Contactform() {
     const response = await axios.post("http://localhost:3000/api/v1/user/email-form",formData)
 
     if(response.status === 200){
-      alert("Form submitted successfully!");
+      toast.success("Form submitted successfully!");
       setFormData({
-        firstName :"",
-        lastName : "",
+        first_name :"",
+        last_name : "",
         email :""
       })
     }else{
       setErrors(response.data.message)
+      toast.error("Failed to submit email form")
     }
   };
 
@@ -65,8 +67,8 @@ function Contactform() {
               <label className="text-[#ffa200] mb-1">First Name</label>
               <input
                 type="text"
-                name="firstName"
-                value={formData.firstName}
+                name="first_name"
+                value={formData.first_name}
                 onChange={handleChange}
                 className={`bg-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                   errors.firstName ? 'border-red-500 focus:ring-red-300' : 'border-gray-300 focus:ring-blue-500'
@@ -80,8 +82,8 @@ function Contactform() {
               <label className="text-[#ffa200] mb-1">Last Name</label>
               <input
                 type="text"
-                name="lastName"
-                value={formData.lastName}
+                name="last_name"
+                value={formData.last_name}
                 onChange={handleChange}
                 className={`w-full bg-white px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                   errors.lastName ? 'border-red-500 focus:ring-red-300' : 'border-gray-300 focus:ring-blue-500'

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+const nav=useNavigate();
   useEffect(() => {
     const fetchBlogs = async () => {
       const token = localStorage.getItem('admin-token');
@@ -40,8 +40,12 @@ export default function Blogs() {
 
   return (
 
-    <div className="container my-5">
-      <h2 className="mb-4">All Blogs</h2>
+    <div className="container my-3">
+      <div className='d-flex justify-content-between py-1'>
+  <h2 className="keynotespeaker"> Blogs</h2>
+  <button  className='bluebutton px-3' onClick={()=>nav("/addblog")}>Add Blogs</button>
+      </div>
+    
       {blogs.length === 0 ? (
         <p>No blogs found.</p>
       ) : (
@@ -52,8 +56,7 @@ export default function Blogs() {
               <h4 className="card-title">{blog.title}</h4>
               <div
                 className="card-text"
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-              />
+                dangerouslySetInnerHTML={{ __html: blog.content }} />
               <p className="text-muted mt-3">
                 Created at: {new Date(blog.created_at).toLocaleString()}
               </p>

@@ -1,18 +1,16 @@
+
 import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdditionalDetail from '../AdditionalDetail/AdditionalDetail';
+import cart from "../../assets/cart.png"
+import profile from "../../assets/person.png"
+import { useParams,useNavigate } from 'react-router-dom';
 
 
 function BookPurchase() {
-
-    const getBookIdFromUrl = () => { 
-    const urlPath = window.location.pathname;
-    const pathParts = urlPath.split('/');
-    const bookId = pathParts[pathParts.length - 1]; 
-    return bookId;
-  };
-
-  const id = getBookIdFromUrl(); 
+    const { id } = useParams();
+    const navigate = useNavigate();
+  
   const [productCount, setProductCount] = useState(1);
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -101,6 +99,48 @@ function BookPurchase() {
     return <div className="p-6 text-center">No book data available</div>;
   }
 
+const handleAddToCart = () => {
+  // Validate that a format is selected
+  if (!selectedFormat) {
+    alert('Please select a format before adding to cart.');
+    return;
+  }
+
+  const cartItem = {
+    bookId: id, // Use id from useParams
+    id: book._id, // Internal book ID from API (if needed for other purposes)
+    title: book.title,
+    image: selectedImage,
+    quantity: productCount,
+    format: selectedFormat.type,
+    price: selectedFormat.price,
+  };
+
+  // Retrieve existing cart from localStorage or initialize an empty array
+  const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Check if the same book with the same bookId and format exists
+  const existingItemIndex = existingCart.findIndex(
+    (item) => item.bookId === cartItem.bookId && item.format === cartItem.format
+  );
+
+  if (existingItemIndex >= 0) {
+    // Update quantity if the bookId and format match
+    existingCart[existingItemIndex].quantity += cartItem.quantity;
+  } else {
+    // Add new item if no match is found
+    existingCart.push(cartItem);
+  }
+
+  // Save the updated cart back to localStorage
+  localStorage.setItem('cart', JSON.stringify(existingCart));
+
+  // Notify the user
+  alert(`${cartItem.title} (${cartItem.format}) added to cart!`);
+};
+
+console.log(book)
+
   const images = typeof book.images === 'string' 
     ? JSON.parse(book.images) 
     : book.images || [];
@@ -109,10 +149,29 @@ function BookPurchase() {
     return path.replace(/\\/g, '/');
   };
 
+  console.log(selectedImage)
+
   return (
     <div className="max-w-7xl mx-auto p-6 my-5 bg-white text-[#001040]">
+      <div className=' flex justify-end gap-3'>
+        <button
+        onClick={() =>{
+          navigate("/checkout")
+        }} 
+        className='flex items-center justify-center'>
+          <img src={cart} alt='cart' />
+          <p className='mt-2 font-medium'>Cart</p>
+        </button>
+        <button className='flex items-center justify-center'>
+          <img src={profile} alt='profile' />
+          <p className='mt-2 font-medium'>Profile</p>
+        </button>
+      </div>
+      
       <div className="flex flex-col md:flex-row gap-8">  
+        
         <div className="md:w-1/3">
+        
           <div className="border border-[#BAB8B8] bg-[#F5F5F5] rounded-lg p-4 flex items-center justify-center">
             <img
               src={selectedImage ? `http://localhost:3000/${normalizeImagePath(selectedImage)}` : "https://via.placeholder.com/400x600"}
@@ -202,8 +261,15 @@ function BookPurchase() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <button className="bg-[#ffa200]  text-white px-5 py-2  font-semibold border border-gray-400">
+            <button 
+            
+            className="bg-[#ffa200]  text-white px-5 py-2  font-semibold border border-gray-400">
               Buy Now
+            </button>
+            <button
+            onClick={handleAddToCart}
+            >
+              <img src={cart} alt='Cart' />
             </button>
             <div className="flex items-center px-5 py-2 rounded-full border border-gray-600 bg-gray-100 text-black">
               <button className="px-2" onClick={decreaseCount}>-</button>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 
 export default function ViewBooks() {
@@ -34,12 +35,13 @@ const handleDelete = async (id) => {
     const res = await axios.delete(`http://localhost:3000/api/v1/admin/deleteBook/${id}`);
     if (res.status === 200) {
       setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
+      toast.success("Deleted Book Successfully")
     } else {
-      alert("Failed to delete book");
+      toast.error("Failed to delete book");
     }
   } catch (err) {
     console.error(err);
-    alert("An error occurred while deleting the book");
+    toast.error("An error occurred while deleting the book");
   }
 };
 
@@ -47,63 +49,70 @@ const handleDelete = async (id) => {
   if (error) return <p className="text-center mt-10 text-red-500">Error: {error}</p>;
 
   return (
-    <section className="py-5 w-full px-4">
-      <div className="flex justify-end p-4 mt-2">
-  <button
-    onClick={() => navigate("/admin/book")}
-    className="bg-[#ffa200] text-white px-4 py-2 rounded-sm border-0  transition">
-    ADD BOOK
-  </button>
+    <>
+   <div className="container my-4">
+ 
+     <div className="d-flex justify-content-between">
+         <h3 className="keynotespeakerhead" >Book Updation</h3>
+      <button
+        onClick={() => navigate("/admin/book")}
+        className="btn btn-warning text-white px-4"
+      >
+        ADD BOOK
+      </button>
+    </div>
+  <div className="row mb-4">
+   
+  </div>
+
+  <div className="row g-4">
+    {books.map((book) => (
+      <div className="col-12 col-md-6 col-lg-4" key={book.id}>
+        <div className="card h-100 shadow-sm">
+          <div onClick={() => navigate(`/book/${book.id}`)} style={{ cursor: "pointer" }}>
+            <img
+              src={`http://localhost:3000/${book.images?.[0]?.replace(/\\/g, "/")}`}
+              className="card-img-top p-3"
+              alt={book.title}
+              style={{ objectFit: "contain", maxHeight: "250px" }}
+            />
+          </div>
+
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title text-truncate" title={book.title}>{book.title}</h5>
+            <div className="d-flex justify-content-between">
+            <p className="text-warning fw-bold">${book.kindle}</p>
+            <p className="text-warning">{"★".repeat(book.stars)}</p>
+            
 </div>
-
-      
-      <div className="flex flex-wrap gap-20 mx-1 md:mx-10">
-        {books.map((book) => (
-          <div
-            key={book.id}
-            className="flex flex-col rounded-lg w-full sm:w-[250px] md:w-[220px] lg:w-[350px]  overflow-hidden"
-          >
-            <div
-              className="flex h-[300px] w-full border-1 border-[#BAB8B8] bg-[#F5F5F5]   rounded-lg cursor-pointer"
-              onClick={() => navigate(`/book/${book.id}`)}
-            >
-              <img
-                src={`http://localhost:3000/${book.images?.[0]?.replace(/\\/g, "/")}`}
-                alt={book.title}
-                className="object-contain max-h-full w-full shadow-md p-10"
-              />
-            </div>
-
-            <div className="flex flex-col flex-1 justify-between px-4 py-3 w-full">
-              <p className="font-semibold text-lg text-black min-h-[56px] leading-snug line-clamp-3">
-                {book.title}
-              </p>
-
-              <p className="text-lg text-[#FFA200] line-clamp-1">
-                ${book.kindle}
-              </p>
-
-              <div className="flex mt-2 text-[#F2C40B] text-lg gap-1">
-                {"★".repeat(book.stars)}
-              </div>
-              <div className="flex justify-between">
-              <button onClick={() => navigate(`bookupdate/${book.id}`)} className="bg-[#001040] text-white rounded-sm p-2 font-normal">UPDATE</button>
-               <button
-                  onClick={() => navigate(`/book/${book.id}`)}
-                  className="bg-[#ffa200] text-white rounded-sm p-2 font-normal"
-                >
-                  View Details
-                </button>
-                 <button
-                  onClick={() => handleDelete(book.id)}
-                  className="bg-[#f93636] text-white rounded-sm p-2 font-normal">
-                 Delete
-                </button>
-             </div>
+            <div className="mt-auto d-flex justify-content-between gap-2">
+              <button
+                onClick={() => navigate(`bookupdate/${book.id}`)}
+                className="btn btn-sm btn-secondary w-100"
+              >
+                UPDATE
+              </button>
+              <button
+                onClick={() => navigate(`/book/${book.id}`)}
+                className="btn btn-sm btn-warning text-white w-100"
+              >
+                View Details
+              </button>
+              <button
+                onClick={() => handleDelete(book.id)}
+                className="btn btn-sm btn-secondary w-100"
+              >
+                Delete
+              </button>
             </div>
           </div>
-        ))}
+        </div>
       </div>
-    </section>
+    ))}
+  </div>
+</div>
+
+   
+    </>
   );
 }

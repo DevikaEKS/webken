@@ -105,7 +105,7 @@ export default function AdminBookForm() {
   return (
     <section className='py-10 w-full h-full'>
        <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow">
-            <h2 className="text-xl font-bold mb-4">Add New Book</h2>
+       <h2 className="text-xl font-bold mb-4">Add New Book</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
 
         <div>
@@ -156,6 +156,7 @@ export default function AdminBookForm() {
               type="number"
               name="kindle"
               id="kindle"
+              min="1"
               value={form.kindle}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -169,6 +170,7 @@ export default function AdminBookForm() {
               type="number"
               name="audible"
               id="audible"
+              min="1"
               value={form.audible}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -182,6 +184,7 @@ export default function AdminBookForm() {
               type="number"
               name="hardcover"
               id="hardcover"
+              min="1"
               value={form.hardcover}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -195,6 +198,7 @@ export default function AdminBookForm() {
               type="number"
               name="audio_cd"
               id="audio_cd"
+              min="1"
               value={form.audio_cd}
               onChange={handleChange}
               className="w-full border p-2 rounded"

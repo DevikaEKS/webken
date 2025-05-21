@@ -85,12 +85,25 @@ export async function updateBook(bookId, bookData) {
 }
 
 
-export async function deleteBook(bookId){
-    const [ result ] = await pool.execute(
-        `DELETE FROM book WHERE id = ?`,[bookId]
-    )
+export async function deleteBook(bookId) {
+    const conn = await pool.getConnection();
+    try {
+        await conn.beginTransaction();
 
-    return result
+        
+        await conn.execute(`DELETE FROM reviews WHERE book_id = ?`, [bookId]);
+
+        
+        const [result] = await conn.execute(`DELETE FROM book WHERE id = ?`, [bookId]);
+
+        await conn.commit();
+        return result;
+    } catch (error) {
+        await conn.rollback();
+        throw error;
+    } finally {
+        conn.release();
+    }
 }
 
 export async function getBookById(bookId) {

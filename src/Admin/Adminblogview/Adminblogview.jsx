@@ -1,8 +1,10 @@
+
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function Blog() {
+export default function Adminblogview() {
   const [blogs, setBlogs] = useState([]);
 
   async function getBlog() {
@@ -37,8 +39,11 @@ export default function Blog() {
                 <h2 className="text-lg font-semibold mb-2 text-black">{blog.title}</h2>
                 <p className="text-muted small">{getPreview(blog.content)}</p>
               </div>
-              <Link to={`/blog/${blog.id}`} className="mt-auto text-decoration-none">
+              <Link to={`/admin/blog/${blog.id}`} className="mt-auto text-decoration-none">
                 <button className="btn btn-sm btn-warning w-100 mt-3 ">View More</button>
+              </Link>
+              <Link to={`/renderblog/${blog.id}`} className="mt-auto text-decoration-none">
+                <button className="btn btn-sm btn-warning w-100 mt-3 ">Update</button>
               </Link>
             </div>
           </div>

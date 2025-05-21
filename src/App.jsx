@@ -42,7 +42,9 @@ import AddYoutubeData from "./Admin/Youtube/AddYoutube"
 import BlogPreview from "./Blog/BlogPreview/BlogPreview"
 import Reviews from "./Admin/Review/Testimonial/Testimonial"
 import Mainbanner from "./LandingPage/Banner/Banner"
-
+import Adminblogview from "./Admin/Adminblogview/Adminblogview"
+import Adminblogpreview from "./Blog/Addblog/Adminblogpreview"
+import Checkoutpage from "./Checkout/Checkoutpage"
 function App() {
   return (
    <Router>
@@ -54,11 +56,12 @@ function App() {
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />
         <Route path="/blog/:blogId" element={[<Navbar/>,<BlogPreview/>,<Footer/>]} />
         <Route path="/book" element={[<Navbar/>,<BookPage />,<Footer/>]} />
-        <Route path="/book/:title" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
+        <Route path="/book/:id" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
         <Route path="/contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
         <Route path="*" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
         <Route path="/bookarea" element={<ViewBooks/>}/>
         <Route path="/myspinecoach" element={[<Drmenubar/>,<Drkenhome/>]}/>
+        <Route path="/checkout" element={[<Navbar/>,<Checkoutpage/>,<Footer/>]}/>
 
         <Route path="/addblog" element={[<ProtectedRoute><Addblog/></ProtectedRoute>]}/>
         <Route path="/admin/login" element={[<Adminlogin/>]}/>
@@ -67,9 +70,11 @@ function App() {
         <Route path="/updateblog" element={[<ProtectedRoute><Updateblog/></ProtectedRoute>]}/>
         <Route path="/renderblog" element={[<ProtectedRoute><Blogs/></ProtectedRoute>]} />
         <Route path="/bookupdate/:blogId" element={[<ProtectedRoute><Updatebookdetails/></ProtectedRoute>]}/>
+        <Route path="/admin/blog/:blogId" element={[<Navbar/>,<Adminblogpreview/>,<Footer/>]} />
         <Route path="/renderblog/:blogId" element={[<ProtectedRoute><UpdateBlogPage/></ProtectedRoute>]} />
         <Route path="/admin/youtube" element={[<ProtectedRoute><AddYoutubeData/></ProtectedRoute>]} />
         <Route path="/admin/review" element={[<ProtectedRoute><Reviews/></ProtectedRoute>]} />
+        <Route path="/admin/blogview" element={[<ProtectedRoute>,<Adminblogview/>,</ProtectedRoute>]}/>
       </Routes>
    </Router>
   )
