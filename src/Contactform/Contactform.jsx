@@ -71,8 +71,7 @@ function Contactform() {
                 value={formData.first_name}
                 onChange={handleChange}
                 className={`bg-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                  errors.firstName ? 'border-red-500 focus:ring-red-300' : 'border-gray-300 focus:ring-blue-500'
-                }`}
+                  errors.firstName ? 'border-red-500 focus:ring-red-300' : 'border-gray-300 focus:ring-blue-500'}`}
                 required
               />
               {errors.firstName && <p className="text-sm text-red-600">{errors.firstName}</p>}
@@ -110,8 +109,7 @@ function Contactform() {
 
             <button
               type="submit"
-              className="block mx-auto bg-[#ffa200] text-white py-3 px-6 rounded-full hover:bg-[#e69100] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffa200] focus:ring-offset-2 font-medium border-2 border-[#ffff] hover:border-[#ffff] hover:text-white cursor-pointer"
-            >
+              className="block mx-auto bg-[#ffa200] text-white py-3 px-6 rounded-full hover:bg-[#e69100] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffa200] focus:ring-offset-2 font-medium border-2 border-[#ffff] hover:border-[#ffff] hover:text-white cursor-pointer">
               Get Updates
             </button>
           </form>

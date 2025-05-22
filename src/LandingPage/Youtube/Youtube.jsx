@@ -6,7 +6,7 @@ export default function Youtube() {
   const [ref, inView] = useInView({ triggerOnce: true });
 
   return (
-    <section className="flex flex-col items-center px-1 md:px-4 py-10 m-2 md:m-0">
+    <section className="container">
       <div className="w-full max-w-[1307px] aspect-video rounded-xl overflow-hidden">
         <div className="relative w-full h-full">
           <iframe
@@ -27,11 +27,11 @@ export default function Youtube() {
         {ACHIEVEMENTS.map((data) => (
           <div
             key={data.id}
-            className="w-full rounded-xl shadow-lg shadow-[#8787836B] flex flex-col justify-center items-center space-y-3 p-6"
+            className="w-full rounded-xl shadow-md shadow-[#8787836B] flex flex-col justify-center items-center space-y-3 p-6"
           >
-            <h1 className="font-bold text-[36px] md:text-[48px] text-[#001040]">
+            <h1 className="font-bold text-[36px] md:text-[48px]" style={{color:"#001040"}}><b>
               {inView ? <CountUp start={0} end={data.count} duration={2} separator="" /> : 0}
-            </h1>
+            </b></h1>
             <p className="text-[#FFA200] text-[20px] md:text-[24px] font-bold text-center">
               {data.name}
             </p>

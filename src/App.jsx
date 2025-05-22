@@ -62,7 +62,6 @@ function App() {
         <Route path="/bookarea" element={<ViewBooks/>}/>
         <Route path="/myspinecoach" element={[<Drmenubar/>,<Drkenhome/>]}/>
         <Route path="/checkout" element={[<Navbar/>,<Checkoutpage/>,<Footer/>]}/>
-
         <Route path="/addblog" element={[<ProtectedRoute><Addblog/></ProtectedRoute>]}/>
         <Route path="/admin/login" element={[<Adminlogin/>]}/>
         <Route path="/adminpage" element={[<Navbar/>,<ProtectedRoute><Admindatapage/></ProtectedRoute>]}/>

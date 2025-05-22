@@ -1,6 +1,15 @@
 export default function Hero() {
   return (
+   
     <section className="relative w-full ">
+    
+       <Helmet>
+        <title>About Dr. Ken Hansraj – Spine Surgeon & Global Health Consultant</title>
+        <meta name="description" content="Learn about Dr. Ken Hansraj's mission to eradicate spinal problems through research, education, and patient care." />
+       
+        <meta name="keywords" content="Spine surgeon, global health consultant, spinal wellness, author biography" />
+        <link rel="canonical" href="https://drken.us/" />
+      </Helmet>
       <img 
         src="./surgery.png"
         alt="Surgery Background"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import "./Bookpage.css";
 
 export default function BookPage() {
   const navigate = useNavigate();
@@ -32,50 +32,47 @@ export default function BookPage() {
   if (error) return <p className="text-center mt-10 text-red-500">Error: {error}</p>;
 
   return (
-    <section className="py-20 w-full px-4">
-      <div className="flex flex-wrap gap-20 mx-1 md:mx-10">
-        {books.map((book) => (
+    <>
+   <div className="container py-4">
+  <div className="row">
+    {books.map((book) => (
+      <div key={book.id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <div className="card h-100 shadow-md border-0">
+          {/* Image occupying full card width */}
           <div
-            key={book.id}
-            className="flex flex-col rounded-lg w-full sm:w-[250px] md:w-[220px] lg:w-[230px]  overflow-hidden"
+            role="button"
+            onClick={() => navigate(`/book/${book.id}`)}
+            className="d-flex justify-content-center align-items-center"
           >
-            <div
-              className="flex h-[300px] w-full border-1 border-[#BAB8B8] bg-[#F5F5F5]   rounded-lg cursor-pointer"
-              onClick={() => navigate(`/book/${book.id}`)}
-            >
-              <img
-                src={`http://localhost:3000/${book.images?.[0]?.replace(/\\/g, "/")}`}
-                alt={book.title}
-                className="object-contain max-h-full w-full shadow-md p-10"
-              />
-            </div>
+            <img
+              src={`http://localhost:3000/${book.images?.[0]?.replace(/\\/g, "/")}`}
+              alt={book.title}
+              className="card-img-top img-fluid"
+              style={{ height: "200px", objectFit: "contain" }}
+            />
+          </div>
 
-            <div className="flex flex-col flex-1 justify-between px-4 py-3 w-full">
-              <p className="font-semibold text-lg text-black min-h-[56px] leading-snug line-clamp-3">
-                {book.title}
-              </p>
-
-              <p className="text-lg text-[#FFA200] line-clamp-1">
-                ${book.kindle}
-              </p>
-
-              <div className="flex mt-2 text-[#F2C40B] text-lg gap-1">
-                {"★".repeat(book.stars)}
-              </div>
-              
-
-              <div className="mt-3">
-                <button
-                  onClick={() => navigate(`/book/${book.id}`)}
-                  className="text-black underline text-lg font-medium"
-                >
-                  View Details
-                </button>
-              </div>
+          {/* Card Body */}
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title  fw-semibold">{book.title}</h5>
+            <div className="d-flex justify-content-between">
+            <p className="text-[#ffa200] fw-bold mb-1"  style={{fontSize:"25px"}}>${book.kindle}</p>
+            <p className="text-[#ffa200] mb-2" style={{fontSize:"22px"}}>{"★".repeat(book.stars)}</p>
+</div>
+            <div className="mt-auto">
+              <button
+                onClick={() => navigate(`/book/${book.id}`)}
+                className="bluebutton px-3 py-2"
+              >
+                View Details
+              </button>
             </div>
           </div>
-        ))}
+        </div>
       </div>
-    </section>
+    ))}
+  </div>
+</div>
+    </>
   );
 }

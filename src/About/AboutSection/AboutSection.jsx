@@ -14,39 +14,31 @@ export default function AboutSection() {
         <AboutCard
         title="Professional Training"
         items={trainingData}
-        className="w-full"
-      />
+        className="w-full"/>
          <AboutCard
         title="Board Certifications"
         items={certificationsData}
-        className="w-full my-5"
-      />
+        className="w-full my-5"/>
       </div>
       
       <div>
         <AboutCard
           title="Professional Affiliations"
           items={affiliationsData}
-          className="w-full"
-        />
+          className="w-full"/>
          <AboutCard
         title="Medical Licenses"
         items={licensesData}
-        className="w-full my-5"
-      />
+        className="w-full my-5"/>
          <AboutCard
         title="Education"
         items={educationData}
-        className="w-full"
-      />
+        className="w-full"/>
       </div>
     
 
-      {/* Row 2: Card 4 (left), Card 3 (right) */}
-    
-    
 
-      <div></div>
+   
     </div>
   );
 }

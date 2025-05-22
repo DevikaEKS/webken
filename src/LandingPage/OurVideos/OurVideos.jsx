@@ -1,10 +1,7 @@
-
 import { useEffect, useState } from "react";
-
 export default function OurVideos() {
   const [videos, setVideos] = useState([]);
   const [showAll, setShowAll] = useState(false);
-
   useEffect(() => {
     const fetchVideos = async () => {
       try {
@@ -33,11 +30,11 @@ export default function OurVideos() {
         {visibleVideos.map((video) => (
           <div
             key={video.id}
-            className="flex flex-col items-center space-y-2 text-center"
+            className="flex flex-col items-center space-y-2 text-center mx-2"
           >
             <iframe
               src={video.yotubelLink}
-              className="w-[382px] max-w-[382px] h-[215px] sm:h-[251px] rounded-lg shadow-lg"
+              className="w-[370px] max-w-[382px] h-[215px] sm:h-[251px] rounded-lg shadow-lg"
               allowFullScreen
             />
             <p className="text-[#001040] font-medium text-base sm:text-lg">
