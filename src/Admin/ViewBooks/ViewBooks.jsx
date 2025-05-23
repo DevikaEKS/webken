@@ -87,7 +87,7 @@ const handleDelete = async (id) => {
 </div>
             <div className="mt-auto d-flex justify-content-between gap-2">
               <button
-                onClick={() => navigate(`bookupdate/${book.id}`)}
+                onClick={() => navigate(`/bookupdate/${book.id}`)}
                 className="btn btn-sm btn-secondary w-100"
               >
                 UPDATE

@@ -1,3 +1,5 @@
+import { Helmet } from "react-helmet";
+
 export default function Hero() {
   return (
    
@@ -8,7 +10,7 @@ export default function Hero() {
         <meta name="description" content="Learn about Dr. Ken Hansraj's mission to eradicate spinal problems through research, education, and patient care." />
        
         <meta name="keywords" content="Spine surgeon, global health consultant, spinal wellness, author biography" />
-        <link rel="canonical" href="https://drken.us/" />
+        <link rel="canonical" href="https://drken.us/about" />
       </Helmet>
       <img 
         src="./surgery.png"

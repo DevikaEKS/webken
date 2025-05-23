@@ -22,8 +22,13 @@
 
 
 
-
+import { useNavigate } from "react-router-dom";
 export default function Lift() {
+   const nav=useNavigate("")
+   const handleBuyNow = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top smoothly
+    nav("/book/2"); // Navigate to /book/2
+  };
   return (
     <section className="py-10 px-4 flex flex-col  md:flex-row items-center justify-center w-full space-y-10 md:space-y-0 md:space-x-20">
       <img
@@ -35,9 +40,9 @@ export default function Lift() {
 
       <div className="font-bold flex flex-col  items-center sm:items-center md:items-center text-center md:text-left">
         <h1 className="headingarea">LIFT</h1>
-        <p className="text-[#FF3A2D] text-xl md:text-[40px]">Meditations to Boost</p>
-        <p className="text-[#FF3A2D] text-xl md:text-[40px] mb-4">Back Health</p>
-        <button className="contactbtn px-3">
+        <p className="text-[#FF3A2D] text-xl lg:text-[40px]">Meditations to Boost<br/> Back Health</p>
+  
+        <button className="contactbtn px-3" onClick={handleBuyNow}>
           Buy Now
         </button>
       </div>

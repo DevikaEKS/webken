@@ -89,12 +89,12 @@ function Aboutpage() {
 
         {/* Right Card Section */}
         <div className="col-md-6 d-flex justify-content-center">
-          <div className="position-relative  text-white rounded p-5 shadow" style={{ maxWidth: "450px",backgroundColor:"#001040" }}>
+          <div className="position-relative  text-white rounded p-5 shadow" style={{ maxWidth: "480px",backgroundColor:"#001040" }}>
             <h1 className=" mb-3 fs-2" style={{color:"#ffa200"}}>Dr. Ken Hansraj</h1>
             <ul className="list-unstyled">
-              <li>• International Best-Selling Author.</li>
-              <li>• Global Health Consultant.</li>
-              <li>• U.S. Spine Surgeon</li>
+              <li> International Best-Selling Author.</li>
+              <li> Global Health Consultant.</li>
+              <li> U.S. Spine Surgeon</li>
             </ul>
 
             <div className="mt-4">

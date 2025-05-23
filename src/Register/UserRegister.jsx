@@ -3,9 +3,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Userregistration() {
-   const navigate = useNavigate() 
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    retypePassword: false,
+  });
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,7 +27,7 @@ function Userregistration() {
     name: /^[A-Za-z. ]{2,}$/,
     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     phone: /^\+?[1-9]\d{1,14}$/,
-    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/ // at least 8 chars, letters and numbers
+    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
   };
 
   const handleChange = (e) => {
@@ -89,12 +95,9 @@ function Userregistration() {
     };
 
     try {
-      const response = await axios.post(
-        'http://localhost:3000/api/v1/user/register',
-        payload
-      );
+      await axios.post('http://localhost:3000/api/v1/user/register', payload);
       toast.success('User registered successfully!');
-      navigate("/login")
+      navigate('/login');
       setFormData({
         firstName: '',
         lastName: '',
@@ -115,66 +118,42 @@ function Userregistration() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md">
+        className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md"
+      >
         <h2 className="text-2xl font-bold text-center text-[#001040] mb-6">
           User Registration
         </h2>
 
-        {/* First Name */}
-        <InputField
-          label="First Name"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          error={errors.firstName}
-        />
+        <InputField label="First Name" name="firstName" value={formData.firstName} onChange={handleChange} error={errors.firstName} />
+        <InputField label="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} error={errors.lastName} />
+        <InputField label="Email" name="email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
+        <InputField label="Mobile Number" name="phone" type="tel" value={formData.phone} onChange={handleChange} error={errors.phone} />
 
-        {/* Last Name */}
-        <InputField
-          label="Last Name"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          error={errors.lastName}
-        />
-
-        {/* Email */}
-        <InputField
-          label="Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          error={errors.email}
-        />
-
-        {/* Phone */}
-        <InputField
-          label="Mobile Number"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleChange}
-          error={errors.phone}
-        />
-
-        {/* Password */}
+        {/* Password field with eye icon */}
         <InputField
           label="Password"
           name="password"
-          type="password"
+          type={showPassword.password ? 'text' : 'password'}
           value={formData.password}
           onChange={handleChange}
-          error={errors.password}/>
+          error={errors.password}
+          showToggle
+          onToggle={() => setShowPassword(prev => ({ ...prev, password: !prev.password }))}
+          isVisible={showPassword.password}
+        />
 
-        {/* Retype Password */}
+        {/* Retype Password with eye icon */}
         <InputField
           label="Retype Password"
           name="retypePassword"
-          type="password"
+          type={showPassword.retypePassword ? 'text' : 'password'}
           value={formData.retypePassword}
           onChange={handleChange}
-          error={errors.retypePassword}/>
+          error={errors.retypePassword}
+          showToggle
+          onToggle={() => setShowPassword(prev => ({ ...prev, retypePassword: !prev.retypePassword }))}
+          isVisible={showPassword.retypePassword}
+        />
 
         <button
           type="submit"
@@ -182,25 +161,48 @@ function Userregistration() {
         >
           Register
         </button>
+        <p className="text-center py-4">
+          Already have an account? <a href="/login"><span className="text-blue-600">Login</span></a>
+        </p>
       </form>
       <ToastContainer />
     </div>
   );
 }
 
-// Reusable InputField component
-const InputField = ({ label, name, value, onChange, error, type = 'text' }) => (
-  <div className="mb-4">
+// Reusable InputField component with optional eye toggle
+const InputField = ({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  type = 'text',
+  showToggle = false,
+  onToggle,
+  isVisible,
+}) => (
+  <div className="mb-4 relative">
     <label className="block font-medium text-gray-700 mb-1">{label}</label>
-    <input
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-      className={`w-full px-4 py-2 border ${
-        error ? 'border-red-500' : 'border-gray-300'
-      } rounded focus:outline-none focus:ring-2 focus:ring-[#001040]`}
-    />
+    <div className="relative">
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={`w-full px-4 py-2 pr-10 border ${
+          error ? 'border-red-500' : 'border-gray-300'
+        } rounded focus:outline-none focus:ring-2 focus:ring-[#001040]`}
+      />
+      {showToggle && (
+        <span
+          onClick={onToggle}
+          className="absolute right-3 top-2.5 cursor-pointer text-gray-600"
+        >
+          {isVisible ?  <FaEye /> :<FaEyeSlash /> }
+        </span>
+      )}
+    </div>
     {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
   </div>
 );

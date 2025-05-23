@@ -107,8 +107,8 @@ function UserLogin() {
         >
           Login
         </button>
-        <p>Forgot Password?</p>
-        <p>Don't have an account Register</p>
+        <p className='text-end'><a></a>Forgot Password?</p>
+        <p className='text-center'>Don't have an account <a href='/register' ><span className='text-decoration-none'>Register</span></a></p>
       </form>
       <ToastContainer />
     </div>

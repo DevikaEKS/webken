@@ -15,14 +15,10 @@ export default function AdminBookForm() {
     book_description: '',
     stars: 1
   });
-
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleChange = (e) => {
     const { name, value, type } = e.target;
-    
-   
     if (type === 'number') {
       const parsedValue = value === '' ? '' : Number(value);
       setForm({
@@ -36,9 +32,7 @@ export default function AdminBookForm() {
       });
     }
   };
-
   console.log("Current stars value:", form);
-
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files).slice(0, 5);
     setSelectedFiles(files);
@@ -51,10 +45,8 @@ export default function AdminBookForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
     try {
-      const formData = new FormData();
-      
+      const formData = new FormData(); 
       Object.keys(form).forEach(key => {
         formData.append(key, form[key]);
       });
@@ -76,9 +68,7 @@ export default function AdminBookForm() {
       );
       
       if (response.status === 201 || response.status === 200) {
-        toast.success("Book added successfully");
-        
-        
+        toast.success("Book added successfully");  
         setForm({
           title: '',
           author_detail: '',
@@ -107,7 +97,6 @@ export default function AdminBookForm() {
        <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow">
        <h2 className="text-xl font-bold mb-4">Add New Book</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-
         <div>
           <label htmlFor="title" className="block font-medium mb-1">Title</label>
           <input
@@ -153,10 +142,10 @@ export default function AdminBookForm() {
           <div>
             <label htmlFor="kindle" className="block font-medium mb-1">Kindle Price</label>
             <input
-              type="number"
+              type="text"
               name="kindle"
               id="kindle"
-              min="1"
+              step="any"
               value={form.kindle}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -167,10 +156,10 @@ export default function AdminBookForm() {
           <div>
             <label htmlFor="audible" className="block font-medium mb-1">Audible Price</label>
             <input
-              type="number"
+              type="text"
               name="audible"
               id="audible"
-              min="1"
+              step="any"
               value={form.audible}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -181,10 +170,10 @@ export default function AdminBookForm() {
           <div>
             <label htmlFor="hardcover" className="block font-medium mb-1">Hardcover Price</label>
             <input
-              type="number"
+              type="text"
               name="hardcover"
               id="hardcover"
-              min="1"
+              step="any"
               value={form.hardcover}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -195,10 +184,10 @@ export default function AdminBookForm() {
           <div>
             <label htmlFor="audio_cd" className="block font-medium mb-1">Audio CD Price</label>
             <input
-              type="number"
+              type="text"
               name="audio_cd"
               id="audio_cd"
-              min="1"
+              step="any"
               value={form.audio_cd}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -252,17 +241,10 @@ export default function AdminBookForm() {
 
         <div>
           <label htmlFor="images" className="block font-medium mb-1">Upload Book Images (Max 5)</label>
-          <input
-            type="file"
-            name="images"
-            id="images"
-            accept="image/*"
-            multiple
+          <input type="file" name="images" id="images" accept="image/*" multiple
             onChange={handleFileChange}
-            className="w-full border p-2 rounded"
-          />
-          <small className="text-gray-500">You can select up to 5 images, each max 5MB.</small>
-          
+            className="w-full border p-2 rounded"/>
+          <small className="text-gray-500">You can select up to 5 images, each max 5MB.</small>   
           {/* Display selected files */}
           {selectedFiles.length > 0 && (
             <div className="mt-2">
@@ -281,8 +263,7 @@ export default function AdminBookForm() {
         <button
           type="submit"
           className="px-4 py-2 bg-[#ffa200] text-white rounded"
-          disabled={isSubmitting}
-        >
+          disabled={isSubmitting}>
           {isSubmitting ? 'Submitting...' : 'Submit Book'}
         </button>
       </form>

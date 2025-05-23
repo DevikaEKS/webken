@@ -94,10 +94,11 @@ export default function Form() {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="w-full sm:w-[166px] h-[42px] bg-[#001040] text-white hover:bg-[#112260] transition-colors py-2 rounded-md font-semibold shadow-md"
+            className="w-full sm:w-[166px] h-[42px] bg-[#001040]  hover:bg-[#112260] transition-colors py-2 rounded-3 font-semibold shadow-md mb-3"
           >
             <span className="text-[#FFA200]">Post a Comment</span>
           </button>
+          
         </div>
       </form>
     </div>

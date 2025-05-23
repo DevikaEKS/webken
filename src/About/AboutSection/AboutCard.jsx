@@ -6,13 +6,11 @@ export default function AboutCard({ title, items, className }) {
       className={cn(
         "rounded-xl shadow-lg p-5 md:p-9  flex flex-col",
         className
-      )}
-      style={{
+      )} style={{
         background:
           "linear-gradient(180deg, #D9FBFF 0%, #EEFDFF 53%, #FFFFFF 100%)",
-      }}
-    >
-      <h2 className="text-2xl md:text-[32px] lg:text-[48px] text-[#001040] mb-4 font-bold">
+ }}>
+      <h2 className="text-2xl md:text-[32px] lg:text-[48px] mb-4 font-bold" style={{color:"#001040"}}>
         {title}
       </h2>
       <ul className="space-y-6 md:space-y-10">

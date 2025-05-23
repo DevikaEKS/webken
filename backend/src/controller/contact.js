@@ -2,7 +2,7 @@ import { isValidEmail } from "../utils/validator.js";
 import { saveContactMessage,getContactMessages } from "../services/contact-service.js"
 import { getEmailMessages, saveEmailMessage } from "../services/email-service.js";
 import { getBlogData, saveBlogData } from "../services/blog-service.js";
-import { sendThankYouEmail } from "../utils/sendEmail.js";
+import { sendEmailListEmail, sendThankYouEmail } from "../utils/sendEmail.js";
 
 export async function handleContactForm(req,res){
     const { full_name,email,message } = req.body; 
@@ -59,6 +59,7 @@ export async function handleEmailContactForm(req,res){
 
     try {
         await saveEmailMessage(first_name,last_name,email);
+        await sendEmailListEmail(email)
         res.status(200).json({ success: true, message: "Form submitted successfully." });
     } catch (err) {
         console.error("Email form error:", err);

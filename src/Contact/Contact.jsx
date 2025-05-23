@@ -4,6 +4,7 @@ import mailimg from "../assets/mail.png";
 import telimg from "../assets/telephone.png";
 import axios from 'axios';
 import "./Contact.css"
+import { Helmet } from 'react-helmet';
 function Contact() {
   const [formData, setFormData] = useState({
     full_name: '',
@@ -66,11 +67,19 @@ function Contact() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-8 md:py-12 font-normal">
+      <Helmet>
+        <title>Contact Dr. Ken Hansraj – Get in Touch</title>
+        <meta name="description" content="Have questions or need assistance? Contact Dr. Ken Hansraj for expert advice on spine health." />
+       
+        <meta name="keywords" content="Contact information, spine health inquiries, Dr. Ken Hansraj" />
+        <link rel="canonical" href="https://drken.us/contact" />
+      
+      </Helmet>
       <div className="flex flex-col md:flex-row gap-8 sm:gap-12">
         
         <div className="w-full lg:w-1/2 xl:w-7/12 space-y-2"> 
           <div className="bg-white p-6 rounded-lg">
-             <h1 className="text-3xl md:text-4xl font-bold text-[#001040] text-center md:text-left my-1 md:my-5">Contact Us</h1>
+             <h1 className=" my-1 md:my-5 headingarea contacttxt">Contact Us</h1>
             <p className=" text-[#ffa200] text-2xl mb-4">For Patient Inquiries, Please Contact:</p>
             <p className="mb-6 text-[#001040] text-lg">The Spine Center at Community Primary Care of Premier Medical Group</p>
 

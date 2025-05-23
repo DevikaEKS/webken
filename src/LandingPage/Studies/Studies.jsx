@@ -1,33 +1,33 @@
-import { STUDIES } from "../../utils/Links";
+// import { STUDIES } from "../../utils/Links";
 
-export default function Studies() {
-  return (
-    <section className="py-20 flex flex-col md:flex-row items-center justify-center  relative px-4 space-y-10 md:space-y-0 md:space-x-6 ">
+// export default function Studies() {
+//   return (
+//     <section className="py-20 flex flex-col md:flex-row items-center justify-center  relative px-4 space-y-10 md:space-y-0 md:space-x-6 ">
     
-      <div className="relative md:-left-[105px] rounded-r-full bg-[#FFA200] w-full max-w-[543px] h-[180px] md:h-[230px] text-white flex items-center justify-center " >
-        <div className="text-start fnt d-none d-lg-block"><b>
-          <h1>Completed</h1>
-          <h1>Studies.</h1></b>
-        </div>
-      </div>
+//       <div className="relative md:-left-[105px] rounded-r-full bg-[#FFA200] w-full max-w-[543px] h-[180px] md:h-[230px] text-white flex items-center justify-center " >
+//         <div className="text-start fnt d-none d-lg-block"><b>
+//           <h1>Completed</h1>
+//           <h1>Studies.</h1></b>
+//         </div>
+//       </div>
 
-      <h1 className="headingarea d-block d-md-none text-center ">Completed Studies</h1>
-      <div className="flex flex-row justify-center gap-6 md:gap-10">
-        {STUDIES.map((study) => (
-          <div
-            key={study.id}>
-            <img
-              src={study.img}
-              alt={study.alt}
-              title={study.title}
-              className="mt-5"/>
-            <p className="text-[20px] md:text-[32px] text-[#001040] mt-3 text-center">{study.name}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+//       <h1 className="headingarea d-block d-md-none text-center ">Completed Studies</h1>
+//       <div className="flex flex-row justify-center gap-6 md:gap-10">
+//         {STUDIES.map((study) => (
+//           <div
+//             key={study.id}>
+//             <img
+//               src={study.img}
+//               alt={study.alt}
+//               title={study.title}
+//               className="mt-5"/>
+//             <p className="text-[20px] md:text-[32px] text-[#001040] mt-3 text-center">{study.name}</p>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
 // import { STUDIES } from "../../utils/Links";
 // export default function Studies() {
@@ -70,3 +70,44 @@ export default function Studies() {
 //     </section>
 //   );
 // }
+
+
+import { STUDIES } from "../../utils/Links";
+
+export default function Studies() {
+  return (
+    <section className="py-20 flex flex-col md:flex-row items-center justify-center relative px-4 space-y-10 md:space-y-0 md:space-x-6">
+    
+     
+      <div className="hidden md:flex relative md:-left-[105px] rounded-r-full bg-[#FFA200] w-full max-w-[543px] h-[180px] md:h-[230px] text-white items-center justify-center">
+        <div className="text-start fnt">
+          <b>
+            <h1>Completed</h1>
+            <h1>Studies.</h1>
+          </b>
+        </div>
+      </div>
+      
+      
+      
+     
+      <h1 className="headingarea d-block d-md-none text-center">Completed Studies</h1>
+      
+      <div className="flex flex-row justify-center gap-6 md:gap-10">
+        {STUDIES.map((study) => (
+          <div key={study.id}>
+            <img
+              src={study.img}
+              alt={study.alt}
+              title={study.title}
+              className="mt-5"
+            />
+            <p className="text-[20px] md:text-[32px] text-[#001040] mt-3 text-center">
+              {study.name}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

@@ -75,7 +75,7 @@ export default function HeroSection() {
   };
 
   const Coursepage = () => {
-    navigate("/My-spine-coach");
+    navigate("/myspinecoach");
   };
 
   return (
@@ -86,19 +86,20 @@ export default function HeroSection() {
        
         <meta name="keywords" content="Dr. Ken Hansraj, Spine health, Neck and back pain, Spinal wellness, Author and speaker, Text neck, Backpack forces, Meditation for spine health, Self-care strategies" />
         <link rel="canonical" href="https://drken.us/" />
+      
       </Helmet>
-      <section className="p-4 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10 overflow-hidden">
-        <div className="w-full md:w-1/2 flex justify-center">
+      <section className="p-4 flex flex-col lg:flex-row items-center md:items-start gap-6 md:gap-10 overflow-hidden">
+        <div className="w-full lg:w-1/2 flex justify-center">
           <img
             src="./doctor.png"
             alt="Dr. Ken Hansraj – Expert Spine Surgeon for Back & Neck Pain"
             title="Dr. Ken Hansraj, spine surgeon and author, expert in back pain, neck issues, and spinal wellness care"
-            className="w-full max-w-md h-auto object-contain"
+            className="w-full max-w-lg h-auto object-contain"
           />
         </div>
 
-        <div className="w-full md:w-1/2 flex flex-col mt-10 items-center md:items-start text-center md:text-left">
-          <div className="font-helvetica text-start">
+        <div className="w-full lg:w-1/2 flex flex-col mt-10 items-center md:items-start text-center lg:text-left">
+          <div className="text-start mainsection">
             <p className="text-[#001040] font-bold text-2xl sm:text-3xl md:text-4xl int">International Best-Selling Author.</p>
             <p className="text-[#001040] font-bold text-2xl sm:text-3xl md:text-4xl">Global Health Consultant.</p>
             <p className="text-[#001040] font-bold text-2xl sm:text-3xl md:text-4xl">U.S. Spine Surgeon.</p>

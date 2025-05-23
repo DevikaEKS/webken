@@ -28,14 +28,21 @@
 
 
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 export default function Course() {
+  const navigate = useNavigate();
+
+  const aboutpagepart = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => navigate("/myspinecoach"), 100);
+  };
   return (
     <section className="container py-5">
       <div className="row align-items-center justify-content-center">      
         {/* Image + Button */}
         <div className="col-sm-12 col-md-7 text-center mb-4 mb-md-0">
           <img src="./Course-lap.png" alt="Course Laptop" className="img-fluid mb-3" />
-          <button className="contactbtn px-4 py-2 font-bold">
+          <button className="contactbtn px-4 py-2 font-bold" onClick={aboutpagepart}>
             Enroll Now
           </button>
         </div>

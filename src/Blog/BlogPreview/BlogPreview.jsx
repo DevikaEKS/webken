@@ -61,11 +61,11 @@ export default function BlogPreview() {
         
 
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Latest Blogs</h2>
+          <h2 className="keynotespeakerhead">Latest Blogs</h2>
           {latestBlogs.map((b) => (
-            <Link to={`/blog/${b.id}`} key={b.id}>
-              <div className="border rounded-md p-3 hover:shadow transition">
-                <h3 className="font-semibold">{b.title}</h3>
+            <Link to={`/blog/${b.id}`} key={b.id} style={{textDecoration:"none"}}>
+              <div className="border rounded-md p-3 hover:shadow transition ">
+                <h3 className="font-semibold" style={{color:"#001040"}}>{b.title}</h3>
                 <p className="text-sm text-gray-600 line-clamp-2">
                   {b.content.replace(/<[^>]+>/g, "").slice(0, 120)}...
                 </p>

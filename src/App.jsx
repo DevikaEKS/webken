@@ -29,9 +29,7 @@ import AdminBookForm from "./Admin/AdminBookForm/AdminBookForm"
 import Admindatapage from "./Admin/Admindatapage/Admindatapage"
 import ViewBooks from "./Admin/ViewBooks/ViewBooks"
 import Updatebookdetails from "./Admin/Bookdetails/Updatebookdetails"
-import Drkenhome from "./Drken/Drkenhomepage/Drkenhome"
 import "bootstrap/dist/css/bootstrap.css"
-import Drmenubar from "./Drken/Drmenubar/Drmenubar"
 import Testimonialpart from "./Testimonialpart/Testimonialpart"
 import Addblog from "./Blog/Addblog/Addblog"
 import Updateblog from "./Blog/Updateblog/Updateblog"
@@ -45,22 +43,27 @@ import Mainbanner from "./LandingPage/Banner/Banner"
 import Adminblogview from "./Admin/Adminblogview/Adminblogview"
 import Adminblogpreview from "./Blog/Addblog/Adminblogpreview"
 import Checkoutpage from "./Checkout/Checkoutpage"
+import Userprofile from "./Userprofile/Userprofile"
+import ForgotPassword from "./ForgotPassword/ForgotPassword"
+
+
 function App() {
   return (
    <Router>
       <Routes>
         <Route path="/register" element={[<Userregistration/>]} />
         <Route path="/login" element={[<UserLogin/>]} /> 
-        <Route path="/" element={[<Navbar/>,<Mainbanner/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
+        <Route path="/" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
         <Route path="/about" element={[<Navbar/>,<Hero/>,<AboutSection/>,<Work/>,<Footer/>]} />
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />
         <Route path="/blog/:blogId" element={[<Navbar/>,<BlogPreview/>,<Footer/>]} />
         <Route path="/book" element={[<Navbar/>,<BookPage />,<Footer/>]} />
+        <Route path="/forgot-password" element={[<ForgotPassword/>]} />
         <Route path="/book/:id" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
         <Route path="/contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
         <Route path="*" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
         <Route path="/bookarea" element={<ViewBooks/>}/>
-        <Route path="/myspinecoach" element={[<Drmenubar/>,<Drkenhome/>]}/>
+        <Route path="/myspinecoach" element={[<Navbar/>,<Mainbanner/>,<Footer/>]}/>
         <Route path="/checkout" element={[<Navbar/>,<Checkoutpage/>,<Footer/>]}/>
         <Route path="/addblog" element={[<ProtectedRoute><Addblog/></ProtectedRoute>]}/>
         <Route path="/admin/login" element={[<Adminlogin/>]}/>
@@ -74,6 +77,7 @@ function App() {
         <Route path="/admin/youtube" element={[<ProtectedRoute><AddYoutubeData/></ProtectedRoute>]} />
         <Route path="/admin/review" element={[<ProtectedRoute><Reviews/></ProtectedRoute>]} />
         <Route path="/admin/blogview" element={[<ProtectedRoute>,<Adminblogview/>,</ProtectedRoute>]}/>
+        <Route path="/useradmin" element={<Userprofile/>}/>
       </Routes>
    </Router>
   )
