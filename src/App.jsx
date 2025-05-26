@@ -34,7 +34,6 @@ import Testimonialpart from "./Testimonialpart/Testimonialpart"
 import Addblog from "./Blog/Addblog/Addblog"
 import Updateblog from "./Blog/Updateblog/Updateblog"
 import Blogs from "./Blog/RenderBlog/RenderBlogs"
-import ProtectedRoute from "./ProtectedRoute"
 import UpdateBlogPage from "./Blog/RenderBlog/UpdateBlog"
 import AddYoutubeData from "./Admin/Youtube/AddYoutube"
 import BlogPreview from "./Blog/BlogPreview/BlogPreview"
@@ -45,6 +44,7 @@ import Adminblogpreview from "./Blog/Addblog/Adminblogpreview"
 import Checkoutpage from "./Checkout/Checkoutpage"
 import Userprofile from "./Userprofile/Userprofile"
 import ForgotPassword from "./ForgotPassword/ForgotPassword"
+import  { ProtectedRoute,UserProtectedRoute } from "./ProtectedRoute"
 
 
 function App() {
@@ -77,7 +77,7 @@ function App() {
         <Route path="/admin/youtube" element={[<ProtectedRoute><AddYoutubeData/></ProtectedRoute>]} />
         <Route path="/admin/review" element={[<ProtectedRoute><Reviews/></ProtectedRoute>]} />
         <Route path="/admin/blogview" element={[<ProtectedRoute>,<Adminblogview/>,</ProtectedRoute>]}/>
-        <Route path="/useradmin" element={<Userprofile/>}/>
+        <Route path="/profile" element={<UserProtectedRoute><Userprofile/></UserProtectedRoute>}/>
       </Routes>
    </Router>
   )

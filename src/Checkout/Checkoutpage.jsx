@@ -106,7 +106,7 @@ function Checkoutpage() {
                     </td>
                     <td>
                       <img
-                        src={`http://localhost:3000/${item.image.replace(/\\/g, '/')}`}
+                        src={`${import.meta.env.VITE_BACKEND_URL}/${item.image.replace(/\\/g, '/')}`}
                         alt={item.title}
                         className='cart-item-img'
                         onError={(e) => {

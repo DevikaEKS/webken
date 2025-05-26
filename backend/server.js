@@ -16,7 +16,7 @@ const app = express();
 
 
 app.use(cors({
-    origin : "http://localhost:5173"
+    origin : ["https://shiny-kataifi-bfe485.netlify.app","http://localhost:5173"]
 }))
 
 app.use(express.json())

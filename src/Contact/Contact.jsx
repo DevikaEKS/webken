@@ -52,7 +52,7 @@ function Contact() {
 
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:3000/api/v1/user/contact-form",formData)
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/contact-form`,formData)
     if(response.status === 200){
       alert("Form submitted successfully!");
       setFormData({

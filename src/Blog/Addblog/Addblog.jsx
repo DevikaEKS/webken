@@ -43,7 +43,7 @@ function Addblog() {
           }
 
           // Upload image to server
-          const response = await fetch('http://localhost:3000/api/v1/admin/uploadImage', {
+          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/uploadImage`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`
@@ -110,7 +110,7 @@ function Addblog() {
         return;
       }
 
-      const response = await fetch('http://localhost:3000/api/v1/admin/addBlog', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/addBlog`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

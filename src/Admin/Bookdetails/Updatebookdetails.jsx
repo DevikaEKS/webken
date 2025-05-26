@@ -38,7 +38,7 @@ function UpdateBookDetails() {
     const fetchBook = async () => {
       setIsLoading(true);
       try {
-        const res = await axios.get(`http://localhost:3000/api/v1/admin/getBookById/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/getBookById/${id}`);
         setBook({
           title: res.data.book.title || "",
           author_detail: res.data.book.author_detail || "",
@@ -137,7 +137,7 @@ function UpdateBookDetails() {
       });
 
     const res = await axios.put(
-      `http://localhost:3000/api/v1/admin/updateBook/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/updateBook/${id}`,
       formData,
       {
         headers: {

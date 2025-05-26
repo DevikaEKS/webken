@@ -56,7 +56,7 @@ export default function AdminBookForm() {
       });
       
       const response = await axios.post(
-        "http://localhost:3000/api/v1/admin/addBook", 
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/addBook`, 
         formData,
         {
           headers: {

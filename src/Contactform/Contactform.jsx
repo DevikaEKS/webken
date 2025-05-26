@@ -31,7 +31,7 @@ function Contactform() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:3000/api/v1/user/email-form",formData)
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/email-form`,formData)
 
     if(response.status === 200){
       toast.success("Form submitted successfully!");

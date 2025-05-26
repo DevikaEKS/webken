@@ -66,7 +66,7 @@ export default function ForgotPassword() {
     setMessage("");
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/forgot-password", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/forgot-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

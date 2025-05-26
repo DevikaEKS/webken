@@ -13,7 +13,7 @@ export default function BookPage() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/v1/admin/getBooks");
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/getBooks`);
         if (res.status !== 200) throw new Error("Failed to fetch books");
         const data = await res.data;
         setBooks(data);
@@ -48,7 +48,7 @@ export default function BookPage() {
             onClick={() => navigate(`/book/${book.id}`)}
             className="d-flex justify-content-center align-items-center">
             <img
-              src={`http://localhost:3000/${book.images?.[0]?.replace(/\\/g, "/")}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}/${book.images?.[0]?.replace(/\\/g, "/")}`}
               alt={book.title}
               className="card-img-top img-fluid"
               style={{ height: "200px", objectFit: "contain" }}/>

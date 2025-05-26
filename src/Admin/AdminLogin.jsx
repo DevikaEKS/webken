@@ -30,7 +30,7 @@ function Adminlogin() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/admin/login", {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/login`, {
         username,
         password
       });

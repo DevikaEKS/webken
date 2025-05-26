@@ -9,7 +9,7 @@ export default function Adminblogview() {
 
   async function getBlog() {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/admin/blogs");
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/blogs`);
       setBlogs(response.data.blogs);
     } catch (err) {
       console.error("Error fetching blogs:", err);

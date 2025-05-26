@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,22 +7,55 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 function Userprofile() {
   const username = 'John Doe';
   const navigate = useNavigate();
   const [showOrders, setShowOrders] = useState(false); // Toggle for orders
+  const[token,setToken] = useState("")
+  const[currentUser,setCurrentUser] = useState({})
 
   const toggleOrders = () => {
     setShowOrders(!showOrders);
   };
+
+ 
+    console.log(token)
+
+    useEffect(() =>{
+        const userToken = localStorage.getItem("user-token")
+        setToken(userToken)
+    },[])
+  
+
+ useEffect(() => {
+  if (!token) return; 
+
+  const fetchUser = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+      setCurrentUser(response.data)
+    } catch (err) {
+      console.error("Error fetching user data:", err);
+    }
+  };
+
+  fetchUser();
+}, [token]); 
+
 
   return (
     <div className="container-fluid bg-light min-vh-100 p-4">
       <div className="row">
         {/* Sidebar */}
         <div className="col-md-3 bg-white p-3 shadow-sm rounded">
-          <h5 className="mb-4">Hello, {username}</h5>
+          <h5 className="mb-4">Hello, {currentUser.first_name}</h5>
           <ul className="list-group list-group-flush">
             {/* <li
               className="list-group-item d-flex align-items-center"
@@ -42,7 +75,9 @@ function Userprofile() {
             </li>
             <li
               className="list-group-item d-flex align-items-center text-danger"
-              onClick={() => navigate('/logout')}
+              onClick={() =>{
+                localStorage.removeItem("user-token")
+              }}
               style={{ cursor: 'pointer' }}
             >
               <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />
@@ -58,9 +93,9 @@ function Userprofile() {
             <hr />
             <div className="row">
               <div className="col-md-6">
-                <p><strong>Name:</strong> {username}</p>
-                <p><strong>Email:</strong> john@example.com</p>
-                <p><strong>Phone:</strong> +91-9876543210</p>
+                <p><strong>Name:</strong> {currentUser.first_name}</p>
+                <p><strong>Email:</strong> {currentUser.email}</p>
+                <p><strong>Phone:</strong> {currentUser.phone}</p>
               </div>
               <div className="col-md-6">
                

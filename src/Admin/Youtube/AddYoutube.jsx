@@ -21,7 +21,7 @@ export default function AddYoutubeData() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/v1/admin/addYoutubeVideo", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/addYoutubeVideo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

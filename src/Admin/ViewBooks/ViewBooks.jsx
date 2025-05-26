@@ -13,7 +13,7 @@ export default function ViewBooks() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/v1/admin/getBooks");
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/getBooks`);
         if (res.status !== 200) throw new Error("Failed to fetch books");
         const data = await res.data;
         setBooks(data);

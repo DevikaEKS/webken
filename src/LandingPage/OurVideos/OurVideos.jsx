@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 export default function OurVideos() {
   const [videos, setVideos] = useState([]);
   const [showAll, setShowAll] = useState(false);
+
+
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/v1/admin/getYoutubeVideo");
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/getYoutubeVideo`);
         const data = await res.json();
         setVideos(data);
 
@@ -17,6 +19,8 @@ export default function OurVideos() {
 
     fetchVideos();
   }, []);
+
+  console.log(import.meta.env.VITE_BACKEND_URL)
 
   const visibleVideos = showAll ? videos : videos.slice(0, 3);
 

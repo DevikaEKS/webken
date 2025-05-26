@@ -1,12 +1,11 @@
 import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdditionalDetail from '../AdditionalDetail/AdditionalDetail';
-import cart from "../../assets/cart.png"
-import profile from "../../assets/person.png"
 import { useParams,useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 function BookPurchase() {
-    const { id } = useParams();
-    const navigate = useNavigate();
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [productCount, setProductCount] = useState(1);
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,6 +15,7 @@ function BookPurchase() {
   const [showFull, setShowFull] = useState(false);
   const [bookReviews,setBookReviews] = useState([])
   const [showModal, setShowModal] = useState(false);
+  const[token,setToekn] = useState("")
 
   const description = book?.book_description || "No description available.";
   const words = description.trim().split(/\s+/);
@@ -27,7 +27,7 @@ function BookPurchase() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:3000/api/v1/admin/getBookById/${id}`)
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/getBookById/${id}`)
       .then((res) => {
         if (res.data && res.data.book) {
           const bookData = res.data.book;
@@ -58,12 +58,17 @@ function BookPurchase() {
   }, [id]); 
 
   async function gettingBookReviews(){
-    const response = await axios.get(`http://localhost:3000/api/v1/admin/reviews/${id}`);
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/reviews/${id}`);
     setBookReviews(response.data.reviews)
   }
 
   useEffect(() => {
     gettingBookReviews()
+  },[])
+
+  useEffect(() =>{
+    const token = localStorage.getItem("user-token")
+    setToekn(token)
   },[])
 
  const increaseCount = () => {
@@ -73,7 +78,7 @@ function BookPurchase() {
     if (prev < maxQuantity) {
       return prev + 1;
     } else {
-      alert("Max Quantity reached");
+      toast("Max Quantity reached");
       return prev;
     }
   });
@@ -104,15 +109,17 @@ function BookPurchase() {
   }
 
 const handleAddToCart = () => {
-  // Validate that a format is selected
+  
   if (!selectedFormat) {
-    alert('Please select a format before adding to cart.');
+    toast('Please select a format before adding to cart.');
     return;
   }
 
+  setShowModal(true);
+
   const cartItem = {
-    bookId: id, // Use id from useParams
-    id: book._id, // Internal book ID from API (if needed for other purposes)
+    bookId: id, 
+    id: book._id, 
     title: book.title,
     image: selectedImage,
     quantity: productCount,
@@ -120,26 +127,26 @@ const handleAddToCart = () => {
     price: selectedFormat.price,
   };
 
-  // Retrieve existing cart from localStorage or initialize an empty array
+ 
   const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // Check if the same book with the same bookId and format exists
+
   const existingItemIndex = existingCart.findIndex(
     (item) => item.bookId === cartItem.bookId && item.format === cartItem.format
   );
 
   if (existingItemIndex >= 0) {
-    // Update quantity if the bookId and format match
+    
     existingCart[existingItemIndex].quantity += cartItem.quantity;
   } else {
-    // Add new item if no match is found
+   
     existingCart.push(cartItem);
   }
   localStorage.setItem('cart', JSON.stringify(existingCart));
-  setShowModal(true);
+  
 };
 
-console.log(book)
+
 
   const images = typeof book.images === 'string' 
     ? JSON.parse(book.images) 
@@ -149,8 +156,7 @@ console.log(book)
     return path.replace(/\\/g, '/');
   };
 
-  console.log(selectedImage)
-
+  
   return (
     <div className="max-w-7xl mx-auto p-6 my-5 bg-white text-[#001040]">
       <div className=' flex justify-end gap-3'>
@@ -166,7 +172,11 @@ console.log(book)
   </svg>
 </div>
         </button>
-        <button className='flex items-center justify-center' onClick={() =>{navigate("/register")}}>
+        <button 
+        className='flex items-center justify-center' 
+        onClick={() =>{
+          token ? navigate("/profile") : navigate("/register")
+        }}>
          <div class="shadow-box d-flex justify-content-center align-items-center">
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M5.85 17.1q1.275-.975 2.85-1.537T12 15t3.3.563t2.85 1.537q.875-1.025 1.363-2.325T20 12q0-3.325-2.337-5.663T12 4T6.337 6.338T4 12q0 1.475.488 2.775T5.85 17.1M12 13q-1.475 0-2.488-1.012T8.5 9.5t1.013-2.488T12 6t2.488 1.013T15.5 9.5t-1.012 2.488T12 13m0 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>
 </div>
@@ -177,7 +187,7 @@ console.log(book)
         <div className="md:w-1/3">
           <div className="border border-[#BAB8B8] bg-[#F5F5F5] rounded-lg p-4 flex items-center justify-center">
             <img
-              src={selectedImage ? `http://localhost:3000/${normalizeImagePath(selectedImage)}` : "https://via.placeholder.com/400x600"}
+              src={selectedImage ? `${import.meta.env.VITE_BACKEND_URL}/${normalizeImagePath(selectedImage)}` : "https://via.placeholder.com/400x600"}
               alt={`${book.title} Cover`}
               className="rounded  max-h-[500px] object-contain"/>
           </div>
@@ -187,7 +197,7 @@ console.log(book)
               {images.map((img, index) => (
                 <img 
                   key={index} 
-                  src={`http://localhost:3000/${normalizeImagePath(img)}`}
+                  src={`${import.meta.env.VITE_BACKEND_URL}/${normalizeImagePath(img)}`}
                   className={`rounded w-20 h-20 object-cover cursor-pointer border-2 ${
                     selectedImage === img ? 'border-blue-500' : 'border-transparent'
                   }`}
@@ -268,8 +278,10 @@ console.log(book)
 
 
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <button 
-            
+            <button
+            onClick={() =>{
+              token ? navigate("") : navigate("/login")
+            }}
             className="bg-[#ffa200]  text-white px-5 py-2  font-semibold border border-gray-400">
               Buy Now
             </button>

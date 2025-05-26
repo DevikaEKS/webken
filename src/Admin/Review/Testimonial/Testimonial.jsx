@@ -28,7 +28,7 @@ export default function Reviews() {
 
   async function getAllBooks() {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/admin/getBooks");
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/getBooks`);
       setBooks(response.data);
     } catch (err) {
       console.error("Failed to fetch books:", err);
@@ -43,7 +43,7 @@ export default function Reviews() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("admin-token");
-      const res = await fetch("http://localhost:3000/api/v1/admin/reviews", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export default function Reviews() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("admin-token");
-      const res = await fetch("http://localhost:3000/api/v1/admin/testimonial", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/testimonial`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -262,7 +262,7 @@ function Admindatapage() {
   useEffect(() => {
     const fetchContactLeads = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/v1/user/contact-form");
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/contact-form`);
         setContactLeads(response.data?.data || []);
       } catch (error) {
         console.error("Error fetching contact leads:", error);
@@ -275,7 +275,7 @@ function Admindatapage() {
   useEffect(() => {
     const fetchEmailLeads = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/v1/user/email-form");
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/email-form`);
         setEmailLeads(response.data?.data || []);
       } catch (error) {
         console.error("Error fetching email leads:", error);
@@ -288,7 +288,7 @@ function Admindatapage() {
   useEffect(() => {
     const fetchBlogLeads = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/v1/user/blog-form");
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/blog-form`);
         setBlogLeads(response.data?.data || []);
       } catch (error) {
         console.error("Error fetching blog leads:", error);

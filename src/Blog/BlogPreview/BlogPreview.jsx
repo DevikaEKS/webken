@@ -11,7 +11,7 @@ export default function BlogPreview() {
   // Fetch selected blog
   const fetchBlog = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/admin/blog/${blogId}`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/blog/${blogId}`);
       setBlog(response.data.blog);
     } catch (err) {
       console.error("Error fetching blog:", err);
@@ -21,7 +21,7 @@ export default function BlogPreview() {
   // Fetch all blogs and sort by latest
   const fetchLatestBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/admin/blogs");
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/blogs`);
       const sorted = response.data.blogs.sort(
         (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
