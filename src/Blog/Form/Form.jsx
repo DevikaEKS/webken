@@ -77,7 +77,7 @@ export default function Form() {
 
   return (
     <div className="w-full max-w-[442px] mx-auto px-7 bg-white rounded-2xl shadow-md">
-      <h2 className="text-center text-[20px] font-bold text-[#001040] mb-6">
+      <h2 className="text-center text-[20px] font-bold mb-6"  style={{color:"#001040"}}>
         Drop your thoughts below!
       </h2>
 

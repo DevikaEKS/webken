@@ -41,7 +41,7 @@ export default function Blog() {
                 <h2 className="text-lg font-semibold mb-2 text-black">{blog.title}</h2>
                 <p className="text-muted small">{getPreview(blog.content)}</p>
               </div>
-              <Link to={`/blog/${blog.id}`} className="mt-auto text-decoration-none">
+              <Link to={`/blog/${blog.id}`} className="mt-auto text-decoration-none" >
                 <button className="btn btn-sm btn-warning w-100 mt-3 ">View More</button>
               </Link>
             </div>
