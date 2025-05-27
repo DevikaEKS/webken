@@ -3,7 +3,7 @@ import "./Contactform.css";
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 
-function Contactform() {
+function  Contactform() {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -47,7 +47,7 @@ function Contactform() {
   };
 
   return (
-    <div className="max-w-6xl mx-3 md:mx-auto p-3 curvedarea my-8 font-normal">
+    <div className="max-w-7xl  mx-3 md:mx-auto p-3 curvedarea flex  my-8 font-normal">
       <div className="flex flex-col md:flex-row gap-2 items-start p-0 md:p-8">
         <div className="md:w-1/2 p-4">
           <h1 className="text-xl md:text-4xl font-bold mb-4 txt">
@@ -84,7 +84,7 @@ function Contactform() {
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
-                className={`w-full bg-white px-4 py-2 border rounded-md focus:outline-none focus:ring-2 text-dark${
+                className={`w-full bg-white px-4 py-2 border text-black rounded-md focus:outline-none focus:ring-2 text-dark${
                   errors.lastName ? 'border-red-500 focus:ring-red-300' : 'border-gray-300 focus:ring-blue-500'
                 }`}
                 required
@@ -107,11 +107,13 @@ function Contactform() {
               {errors.email && <p className="text-sm text-red-600">{errors.email}</p>}
             </div>
 
-            <button
-              type="submit"
-              className="block mx-auto bg-[#ffa200] text-white py-3 px-6 rounded-full hover:bg-[#e69100] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffa200] focus:ring-offset-2 font-medium border-2 border-[#ffff] hover:border-[#ffff] hover:text-white cursor-pointer">
-              Get Updates
-            </button>
+                  <button
+                   type="submit"
+                  className="block mx-auto bg-[#ffa200] rounded-full text-white py-3 px-6 hover:bg-[#e69100] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffa200] focus:ring-offset-2 font-medium border-2 border-white hover:border-white hover:text-white cursor-pointer"
+                  >
+                    Get Updates
+                  </button>
+
           </form>
         </div>
         <ToastContainer/>

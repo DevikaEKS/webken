@@ -140,7 +140,7 @@ import { Links, CONTACT_US, SOCIAL } from "../../utils/Links";
 export default function Footer() {
   return (
     <>
-      <div className="container-fluid py-4" style={{ backgroundColor: "#001040" }}>
+      <div className="container-fluid py-4 " style={{ backgroundColor: "#001040" }}>
         <div className="row text-white">
           {/* Logo */}
           <div className="col-12 col-md-3 d-flex justify-content-center align-items-center mb-4 mb-md-0">

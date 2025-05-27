@@ -120,7 +120,10 @@ export default function AdditionalDetail({ reviews,book }) {
               >
                 <div className="flex flex-col  space-x-2">
                   <div className="flex flex-row items-center space-x-2">
-                    <div className="w-10 h-9 bg-blue-950 rounded-full text-white text-center font-bold text-lg">{review.name.split("")[0]}</div>
+                   <div className="w-10 h-10 bg-blue-950 rounded-full text-white font-bold text-lg flex items-center justify-center">
+                      {review.name.charAt(0)}
+                   </div>
+
                     <p className="font-semibold mt-2">{review.name}</p>
                   </div>
                   
@@ -183,6 +186,8 @@ export default function AdditionalDetail({ reviews,book }) {
                 placeholder="Share your thoughts about the book..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+                minLength="10"
+                maxLength="100"
               ></textarea>
 
               <button

@@ -53,14 +53,14 @@ function App() {
       <Routes>
         <Route path="/register" element={[<Userregistration/>]} />
         <Route path="/login" element={[<UserLogin/>]} /> 
-        <Route path="/" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
+        <Route path="/" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Testimonialpart/>,<Footer/>]} />
         <Route path="/about" element={[<Navbar/>,<Hero/>,<AboutSection/>,<Work/>,<Footer/>]} />
         <Route path="/blog" element={[<Navbar/>,<Blog/>,<Footer/>]} />
         <Route path="/blog/:blogId" element={[<Navbar/>,<BlogPreview/>,<Footer/>]} />
         <Route path="/book" element={[<Navbar/>,<BookPage />,<Footer/>]} />
         <Route path="/forgot-password" element={[<ForgotPassword/>]} />
         <Route path="/book/:id" element={[<Navbar/>,<BookOrderPage/>,<Footer/>]} />
-        <Route path="/contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
+        <Route path="/Contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
         <Route path="*" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
         <Route path="/bookarea" element={<ViewBooks/>}/>
         <Route path="/myspinecoach" element={[<Navbar/>,<Mainbanner/>,<Footer/>]}/>
@@ -73,11 +73,11 @@ function App() {
         <Route path="/renderblog" element={[<ProtectedRoute><Blogs/></ProtectedRoute>]} />
         <Route path="/bookupdate/:blogId" element={[<ProtectedRoute><Updatebookdetails/></ProtectedRoute>]}/>
         <Route path="/admin/blog/:blogId" element={[<Navbar/>,<Adminblogpreview/>,<Footer/>]} />
-        <Route path="/renderblog/:blogId" element={[<ProtectedRoute><UpdateBlogPage/></ProtectedRoute>]} />
+        <Route path="/admin/renderblog/:blogId" element={[<ProtectedRoute><UpdateBlogPage/></ProtectedRoute>]} />
         <Route path="/admin/youtube" element={[<ProtectedRoute><AddYoutubeData/></ProtectedRoute>]} />
         <Route path="/admin/review" element={[<ProtectedRoute><Reviews/></ProtectedRoute>]} />
         <Route path="/admin/blogview" element={[<ProtectedRoute>,<Adminblogview/>,</ProtectedRoute>]}/>
-        <Route path="/profile" element={<UserProtectedRoute><Userprofile/></UserProtectedRoute>}/>
+        <Route path="/profile" element={<UserProtectedRoute><Navbar/>,<Userprofile/>,<Footer/></UserProtectedRoute>}/>
       </Routes>
    </Router>
   )

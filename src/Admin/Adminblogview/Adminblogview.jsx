@@ -42,7 +42,7 @@ export default function Adminblogview() {
               <Link to={`/admin/blog/${blog.id}`} className="mt-auto text-decoration-none">
                 <button className="btn btn-sm btn-warning w-100 mt-3 ">View More</button>
               </Link>
-              <Link to={`/renderblog/${blog.id}`} className="mt-auto text-decoration-none">
+              <Link to={`/admin/renderblog/${blog.id}`} className="mt-auto text-decoration-none">
                 <button className="btn btn-sm btn-warning w-100 mt-3 ">Update</button>
               </Link>
             </div>

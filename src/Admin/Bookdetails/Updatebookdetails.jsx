@@ -27,7 +27,9 @@ function UpdateBookDetails() {
     hardcover: "",
     audio_cd: "",
     book_description: "",
-    stars: 0
+    stars: 0,
+    editorial_review : "",
+    about_author : ""
   });
 
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -48,7 +50,9 @@ function UpdateBookDetails() {
           hardcover: res.data.book.hardcover || "",
           audio_cd: res.data.book.audio_cd || "",
           book_description: res.data.book.book_description || "",
-          stars: res.data.book.stars || 0
+          stars: res.data.book.stars || 0,
+          editorial_review: res.data.book.editorial_review || "",
+          about_author: res.data.book.about_author || ""
         });
         
         // Set existing images from response
@@ -319,6 +323,9 @@ function UpdateBookDetails() {
             onChange={handleChange}
             className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
             rows="4"
+            required
+            minLength="100"
+            maxLength="200"
           />
         </div>
 
@@ -366,6 +373,36 @@ function UpdateBookDetails() {
             </div>
           )}
         </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Editorial Review</label>
+          <textarea
+            name="editorial_review"
+            value={book.editorial_review}
+            onChange={handleChange}
+            minLength={50}
+            maxLength={1000}
+            required
+            className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            rows={5}
+            placeholder="Enter an editorial review (50-1000 characters)"
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">About the Author</label>
+          <textarea
+            name="about_author"
+            value={book.about_author}
+            onChange={handleChange}
+            minLength={50}
+            maxLength={1000}
+            required
+            className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            rows={5}
+            placeholder="Write about the author (50-1000 characters)"
+          />
+        </div>
+
 
         <div className="flex gap-4">
           <button

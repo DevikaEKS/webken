@@ -51,8 +51,8 @@ export default function AddYoutubeData() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded mt-10">
-      
+    <div className="max-w-md mx-auto p-6 bg-white border  rounded mt-10">
+    
       <h2 className="text-2xl font-bold mb-4 text-center text-[#001040]">Add YouTube Video</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

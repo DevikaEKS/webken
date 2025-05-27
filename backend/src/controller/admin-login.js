@@ -21,7 +21,7 @@ export async function handleAdminLogin(req,res){
             const admin = result.admin;
 
             console.log(admin)
-            const token = jwt.sign({ id: admin.id }, JWT_SECRET, { expiresIn: "1d" });
+            const token = jwt.sign({ id: admin.id }, JWT_SECRET);
             
            return res.status(200).json({
                 message: "Login successful",

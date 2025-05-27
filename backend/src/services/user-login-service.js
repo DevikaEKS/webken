@@ -18,7 +18,6 @@ export async function loginUser({ email, password }) {
         const token = jwt.sign(
             { id: user.id, email: user.email },
             JWT_SECRET,
-            { expiresIn: "1d" }
         );
         delete user.password;
         return { user, token };

@@ -190,6 +190,8 @@ export default function Reviews() {
             className="border border-gray-300 p-2 w-full rounded"
             rows={4}
             required
+            minLength="100" 
+            maxLength="200"
           />
         </div>
 

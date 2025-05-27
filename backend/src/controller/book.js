@@ -6,7 +6,7 @@ export async function handleCreateBook(req, res) {
   try {
     const bookData = req.body;
 
-    console.log(bookData.images)
+    
 
     
     if (!bookData.title) {

@@ -13,7 +13,7 @@ function UserLogin() {
   const [errors, setErrors] = useState({});
   const regex = {
     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$/, // Minimum 6 chars, at least 1 letter & 1 number
+    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/, // Minimum 6 chars, at least 1 letter & 1 number
   };
 
   const handleChange = (e) => {
@@ -31,7 +31,7 @@ function UserLogin() {
         break;
       case 'password':
         if (!regex.password.test(value)) {
-          setErrors((prev) => ({ ...prev, password: 'Password must be at least 6 characters and include a number' }));
+          setErrors((prev) => ({ ...prev, password: 'Password must be at least 8 characters and include a number' }));
         } else {
           setErrors((prev) => ({ ...prev, password: '' }));
         }
@@ -107,7 +107,7 @@ function UserLogin() {
         >
           Login
         </button>
-        <p className='text-end'><a></a>Forgot Password?</p>
+        <p className='text-end mt-2'><a href='/forgot-password'>Forgot Password?</a></p>
         <p className='text-center'>Don't have an account <a href='/register' ><span className='text-decoration-none'>Register</span></a></p>
       </form>
       <ToastContainer />

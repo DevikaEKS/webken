@@ -5,6 +5,8 @@ import telimg from "../assets/telephone.png";
 import axios from 'axios';
 import "./Contact.css"
 import { Helmet } from 'react-helmet';
+import { toast } from 'react-toastify';
+
 function Contact() {
   const [formData, setFormData] = useState({
     full_name: '',
@@ -54,7 +56,7 @@ function Contact() {
 
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/contact-form`,formData)
     if(response.status === 200){
-      alert("Form submitted successfully!");
+      toast.success("Form submitted successfully!");
       setFormData({
         full_name : "",
         message : "",
@@ -62,6 +64,7 @@ function Contact() {
       })
     }else{
       setErrors(response.data.message)
+      toast.error(response.data.message)
     }
   };
 
@@ -170,6 +173,8 @@ function Contact() {
                   className="w-full px-4 py-2 shadow-md rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200"
                   value={formData.message}
                   onChange={handleChange}
+                  minLength="10"
+                  maxLength="100"
                 ></textarea>
               </div>
 

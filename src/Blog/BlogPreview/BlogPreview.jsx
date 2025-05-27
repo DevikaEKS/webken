@@ -38,41 +38,45 @@ export default function BlogPreview() {
   }, [blogId]);
 
   return (
-    <section className="py-10 sm:px-8 md:px-16 flex flex-col sm:flex-row gap-10">
+    <section className="px-4 py-10 sm:px-6 lg:px-16 flex flex-col lg:flex-row gap-8">
       {/* Left Side: Blog Content */}
-      <div className="w-full sm:w-2/3 space-y-6">
+      <div className="w-full lg:w-2/3 space-y-6">
         {blog ? (
           <>
-            <h1 className="text-3xl font-bold text-[#001040]">{blog.title}</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#001040] leading-tight">
+              {blog.title}
+            </h1>
             <div
-              className="prose max-w-none"
+              className="prose max-w-none prose-sm sm:prose-base"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
           </>
         ) : (
-          <p>Loading blog...</p>
+          <p className="text-gray-500">Loading blog...</p>
         )}
       </div>
 
       {/* Right Side: Form + Latest Blogs */}
-      <div className="sm:w-1/3 w-full space-y-6">
-        
+      <div className="w-full lg:w-1/3 space-y-6">
+        <div className="bg-white rounded-md shadow-sm p-4 border">
           <Form />
-        
+        </div>
 
         <div className="space-y-4">
-          <h2 className="keynotespeakerhead">Latest Blogs</h2>
-          {latestBlogs.map((b) => (
-            <Link to={`/blog/${b.id}`} key={b.id} style={{textDecoration:"none"}}>
-              <div className="border rounded-md p-3 hover:shadow transition ">
-                <h3 className="font-semibold" style={{color:"#001040"}}>{b.title}</h3>
+          <h2 className="text-xl font-semibold text-[#001040]">Latest Blogs</h2>
+          {latestBlogs.length > 0 ? latestBlogs.map((b) => (
+            <Link to={`/blog/${b.id}`} key={b.id} className="block">
+              <div className="border rounded-md p-3 hover:shadow-md transition bg-white">
+                <h3 className="font-semibold text-[#001040] text-lg">{b.title}</h3>
                 <p className="text-sm text-gray-600 line-clamp-2">
                   {b.content.replace(/<[^>]+>/g, "").slice(0, 120)}...
                 </p>
                 <span className="text-blue-600 text-sm hover:underline">Read more →</span>
               </div>
             </Link>
-          ))}
+          )) : (
+            <p className="text-gray-500">Currently No latest Blog To Preview</p>
+          )}
         </div>
       </div>
     </section>

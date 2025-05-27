@@ -51,20 +51,14 @@ function Userprofile() {
 
 
   return (
-    <div className="container-fluid bg-light min-vh-100 p-4">
-      <div className="row">
-        {/* Sidebar */}
-        <div className="col-md-3 bg-white p-3 shadow-sm rounded">
+   <div className="container-fluid bg-light min-vh-100 p-3 pt-5 pt-md-4">
+
+          <div className="row flex-column flex-md-row">
+      {/* Sidebar */}
+      <div className="col-md-3 mb-3 mb-md-0">
+        <div className="bg-white p-3 shadow-sm rounded h-100">
           <h5 className="mb-4">Hello, {currentUser.first_name}</h5>
           <ul className="list-group list-group-flush">
-            {/* <li
-              className="list-group-item d-flex align-items-center"
-              onClick={() => navigate('/profile')}
-              style={{ cursor: 'pointer' }}
-            >
-              <FontAwesomeIcon icon={faUser} className="me-2" />
-              Profile
-            </li> */}
             <li
               className="list-group-item d-flex align-items-center"
               onClick={toggleOrders}
@@ -75,8 +69,9 @@ function Userprofile() {
             </li>
             <li
               className="list-group-item d-flex align-items-center text-danger"
-              onClick={() =>{
-                localStorage.removeItem("user-token")
+              onClick={() => {
+                localStorage.removeItem("user-token");
+                navigate("/login");
               }}
               style={{ cursor: 'pointer' }}
             >
@@ -85,32 +80,31 @@ function Userprofile() {
             </li>
           </ul>
         </div>
+      </div>
 
-        {/* Main Content */}
-        <div className="col-md-9 mt-3 mt-md-0">
-          <div className="bg-white p-4 shadow-sm rounded">
-            <h4>Your Profile</h4>
-            <hr />
-            <div className="row">
-              <div className="col-md-6">
-                <p><strong>Name:</strong> {currentUser.first_name}</p>
-                <p><strong>Email:</strong> {currentUser.email}</p>
-                <p><strong>Phone:</strong> {currentUser.phone}</p>
-              </div>
-              <div className="col-md-6">
-               
-              </div>
+      {/* Main Content */}
+      <div className="col-md-9">
+        <div className="bg-white p-4 shadow-sm rounded">
+          <h4>Your Profile</h4>
+          <hr />
+          <div className="row">
+            <div className="col-sm-12 col-md-6 mb-3">
+              <p><strong>Name:</strong> {currentUser.first_name}</p>
+              <p><strong>Email:</strong> {currentUser.email}</p>
+              <p><strong>Phone:</strong> {currentUser.phone}</p>
             </div>
           </div>
-
-          {showOrders && (
-            <div className="bg-white p-4 mt-4 shadow-sm rounded">
-              <h5>Your Recent Orders</h5>
-              <p>No recent orders</p>
-            </div>
-          )}
         </div>
+
+        {showOrders && (
+          <div className="bg-white p-4 mt-4 shadow-sm rounded">
+            <h5>Your Recent Orders</h5>
+            <p>No recent orders</p>
+          </div>
+        )}
       </div>
+    </div>
+
     </div>
   );
 }

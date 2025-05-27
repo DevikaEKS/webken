@@ -79,14 +79,13 @@ export default function Studies() {
     <section className="py-20 flex flex-col md:flex-row items-center justify-center relative px-4 space-y-10 md:space-y-0 md:space-x-6">
     
      
-      <div className="hidden md:flex relative md:-left-[105px] rounded-r-full bg-[#FFA200] w-full max-w-[543px] h-[180px] md:h-[230px] text-white items-center justify-center">
-        <div className="text-start fnt">
-          <b>
-            <h1>Completed</h1>
-            <h1>Studies.</h1>
-          </b>
+     <div className="hidden md:flex relative rounded-r-full bg-[#FFA200] w-full max-w-[543px] h-[180px] md:h-[230px] text-white items-center justify-center px-8">
+        <div className="text-start">
+          <h1 className="text-2xl md:text-3xl font-bold">Completed</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">Studies.</h1>
         </div>
-      </div>
+    </div>
+
       
       
       

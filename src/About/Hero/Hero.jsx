@@ -15,10 +15,10 @@ export default function Hero() {
       <img 
         src="./surgery.png"
         alt="Surgery Background"
-        className="w-full h-[400px] sm:h-[500px] md:h-[530px] lg:h-[530px] object-cover"
+        className="w-full h-[600px] sm:h-[500px] md:h-[530px] lg:h-[530px] object-cover"
       />
 
-      <div className="absolute inset-0 flex items-start px-4 md:px-10 pt-6 md:pt-10">
+      <div className="absolute inset-0 flex items-start px-4 md:px-10 pt-6 md:pt-10 ">
         <div className="flex flex-col space-y-3 md:space-y-4 max-w-full md:max-w-[700px] p-4 md:p-6 rounded-lg bg-opacity-60  max-h-[calc(100%-2rem)] scrollbar-thin">
           <h1 className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-semibold my-3" style={{color:"#001040"}}>
             Dr. Kenneth Hansraj,

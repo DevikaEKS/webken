@@ -141,7 +141,7 @@ function Addblog() {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container my-5 p-6">
       <h2 className="mb-3">Add Blog Post</h2>
       
       {message.text && (

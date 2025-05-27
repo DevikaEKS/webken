@@ -11,12 +11,14 @@ export async function createBook(bookData) {
     audio_cd, 
     book_description, 
     images = [], 
-    stars 
+    stars,
+    editorial_review,
+    about_author, 
   } = bookData;
 
   const [result] = await pool.execute(
-    `INSERT INTO book (title, author_detail, quantity, kindle, audible, hardcover, audio_cd, book_description, images, stars) 
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO book (title, author_detail, quantity, kindle, audible, hardcover, audio_cd, book_description, images, stars,editorial_review,about_author) 
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)`,
     [
       title, 
       author_detail, 
@@ -27,7 +29,9 @@ export async function createBook(bookData) {
       audio_cd, 
       book_description, 
       JSON.stringify(images), 
-      stars
+      stars,
+      editorial_review,
+      about_author
     ]
   );
 
@@ -52,6 +56,8 @@ export async function updateBook(bookId, bookData) {
     audio_cd,
     book_description,
     images = [],
+    editorial_review,
+    about_author
   } = bookData;
 
   const [result] = await pool.execute(
@@ -65,8 +71,10 @@ export async function updateBook(bookId, bookData) {
       audio_cd = ?, 
       book_description = ?, 
       images = ?, 
+      editorial_review = ?,
+      about_author = ?,
       updated_at = CURRENT_TIMESTAMP
-     WHERE id = ?`,
+    WHERE id = ?`,
     [
       title,
       author_detail,
@@ -77,12 +85,15 @@ export async function updateBook(bookId, bookData) {
       audio_cd,
       book_description,
       JSON.stringify(images),
-      bookId,
+      editorial_review,
+      about_author,
+      bookId
     ]
   );
 
   return result;
 }
+
 
 
 export async function deleteBook(bookId) {

@@ -78,7 +78,9 @@ export default function AdminBookForm() {
           hardcover: '',
           audio_cd: '',
           book_description: '',
-          stars: 1
+          stars: 1,
+          editorial_review : "",
+          about_author : ""
         });
         setSelectedFiles([]);
       } else {
@@ -206,6 +208,8 @@ export default function AdminBookForm() {
             rows={4}
             className="w-full border p-2 rounded"
             required
+            minLength="100"
+            maxLength="200"
           />
         </div>
 
@@ -259,6 +263,36 @@ export default function AdminBookForm() {
             </div>
           )}
         </div>
+              <div>
+        <label htmlFor="editorial_review" className="block font-medium mb-1">Editorial Review</label>
+        <textarea
+          name="editorial_review"
+          id="editorial_review"
+          value={form.editorial_review}
+          onChange={handleChange}
+          rows={4}
+          className="w-full border p-2 rounded"
+          required
+          minLength="100"
+          maxLength="200"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="about_author" className="block font-medium mb-1">About the Author</label>
+        <textarea
+          name="about_author"
+          id="about_author"
+          value={form.about_author}
+          onChange={handleChange}
+          rows={4}
+          className="w-full border p-2 rounded"
+          required
+          minLength="100"
+          maxLength="200"
+        />
+      </div>
+
 
         <button
           type="submit"

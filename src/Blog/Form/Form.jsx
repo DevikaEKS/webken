@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,12 @@ export default function Form() {
     website: "",
     message: "",
   });
+  const [errors, setErrors] = useState({
+    email: "",
+  });
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,31 +23,63 @@ export default function Form() {
       ...prev,
       [name]: value,
     }));
+
+    // Validate email on change
+    if (name === "email") {
+      if (!value) {
+        setErrors((prev) => ({ ...prev, email: "Email is required" }));
+      } else if (!emailRegex.test(value)) {
+        setErrors((prev) => ({ ...prev, email: "Please enter a valid email address" }));
+      } else {
+        setErrors((prev) => ({ ...prev, email: "" }));
+      }
+    }
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:3000/api/v1/user/blog-form",formData);
-
-    if(response.status === 200){
-      alert("Form submitted successfully")
-      setFormData({
-        first_name : "",
-        email : "",
-        website : "",
-        message : ""
-      })
-    }else{
-      alert(response.data.message)
+    // Validate email before submission
+    if (!formData.email) {
+      setErrors((prev) => ({ ...prev, email: "Email is required" }));
+      toast.error("Email is required");
+      return;
+    }
+    if (!emailRegex.test(formData.email)) {
+      setErrors((prev) => ({ ...prev, email: "Please enter a valid email address" }));
+      toast.error("Please enter a valid email address");
+      return;
     }
 
-    console.log("Form Data:", formData); 
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/blog-form`,
+        formData
+      );
+
+      if (response.status === 200) {
+        toast.success("Form submitted successfully");
+        setFormData({
+          first_name: "",
+          email: "",
+          website: "",
+          message: "",
+        });
+        setErrors({ email: "" }); // Clear errors on successful submission
+      } else {
+        toast.error(response.data.message || "Failed to submit form");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.message || "An error occurred while submitting the form");
+    }
   };
 
   return (
     <div className="w-full max-w-[442px] mx-auto px-7 bg-white rounded-2xl shadow-md">
-      <h2 className="text-center text-[20px] font-bold text-[#001040] mb-6">Drop your thoughts below!</h2>
+      <h2 className="text-center text-[20px] font-bold text-[#001040] mb-6">
+        Drop your thoughts below!
+      </h2>
 
       <form className="space-y-5 font-medium" onSubmit={handleSubmit}>
         <div>
@@ -62,9 +101,14 @@ export default function Form() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#001040] shadow-sm"
+            className={`w-full px-4 py-2 rounded-md border ${
+              errors.email ? "border-red-500" : "border-gray-200"
+            } focus:outline-none focus:ring-2 focus:ring-[#001040] shadow-sm`}
             required
           />
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+          )}
         </div>
 
         <div>
@@ -88,17 +132,18 @@ export default function Form() {
             rows={4}
             className="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#001040] shadow-sm resize-none"
             required
+            minLength="10"
+            maxLength="100"
           />
         </div>
 
         <div className="flex justify-center">
           <button
             type="submit"
-            className="w-full sm:w-[166px] h-[42px] bg-[#001040]  hover:bg-[#112260] transition-colors py-2 rounded-3 font-semibold shadow-md mb-3"
+            className="w-full sm:w-[166px] h-[42px] bg-[#001040] hover:bg-[#112260] transition-colors py-2 rounded-3 font-semibold shadow-md mb-3"
           >
             <span className="text-[#FFA200]">Post a Comment</span>
           </button>
-          
         </div>
       </form>
     </div>
