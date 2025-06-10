@@ -7,14 +7,7 @@ import userLogin from "./src/routes/user/login.js"
 import { authenticateAdmin, authenticateToken } from "./src/middleware/authmiddleware.js"
 import { getCurrentUser } from "./src/controller/user-controller.js"
 import cors from "cors"
-
-
-
-
-
 const app = express();
-
-
 app.use(cors({
     origin : ["https://shiny-kataifi-bfe485.netlify.app","http://localhost:5173"]
 }))

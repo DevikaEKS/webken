@@ -63,7 +63,7 @@ function App() {
         <Route path="/Contact" element={[<Navbar/>,<Contact/>,<Maparea/>,<Contactform/> ,<Footer/>]} />
         <Route path="*" element={[<Navbar/>,<HeroSection/>,<Aboutpage/>,<Course/>,<Youtube/>,< LatestBook/>,<Author/>,<Lift/>,<BuyingBook />,<Expert/>,<Studies/>,<OurVideos/>,<SpeakerCard/>,<Footer/>]} />
         <Route path="/bookarea" element={<ViewBooks/>}/>
-        <Route path="/myspinecoach" element={[<Navbar/>,<Mainbanner/>,<Footer/>]}/>
+        {/* <Route path="http://18.232.97.230/lms" element={[<Navbar/>,<Mainbanner/>,<Footer/>]}/> */}
         <Route path="/checkout" element={[<Navbar/>,<Checkoutpage/>,<Footer/>]}/>
         <Route path="/addblog" element={[<ProtectedRoute><Addblog/></ProtectedRoute>]}/>
         <Route path="/admin/login" element={[<Adminlogin/>]}/>

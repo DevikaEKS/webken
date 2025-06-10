@@ -181,7 +181,7 @@ function BookPurchase() {
           {/* Image section remains unchanged */}
           <div className="border border-[#BAB8B8] bg-[#F5F5F5] rounded-lg p-4 flex items-center justify-center">
             <img
-              src={selectedImage ? `${import.meta.env.VITE_BACKEND_URL}/${normalizeImagePath(selectedImage)}` : 'https://via.placeholder.com/400x600'}
+              src={selectedImage ? `${import.meta.env.VITE_BACKEND_URL}/api/${normalizeImagePath(selectedImage)}` : 'https://via.placeholder.com/400x600'}
               alt={`${book.title} Cover`}
               className="rounded max-h-[500px] object-contain"
             />
@@ -191,7 +191,7 @@ function BookPurchase() {
               {images.map((img, index) => (
                 <img
                   key={index}
-                  src={`${import.meta.env.VITE_BACKEND_URL}/${normalizeImagePath(img)}`}
+                  src={`${import.meta.env.VITE_BACKEND_URL}/api/${normalizeImagePath(img)}`}
                   className={`rounded w-20 h-20 object-cover cursor-pointer border-2 ${
                     selectedImage === img ? 'border-blue-500' : 'border-transparent'
                   }`}

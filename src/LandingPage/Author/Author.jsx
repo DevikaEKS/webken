@@ -1,23 +1,3 @@
-// export default function Author() {
-//   return (
-//     <section className=" flex flex-col justify-center items-center py-10 space-y-15 px-4">
-      
-//         <h1 className="headingarea text-center">
-//         Published Author <span className="text-[#F99420]">.</span>
-//       </h1>
-      
-//       <img 
-//         src="./Authors.png" 
-//         alt="Published Author" 
-//         className="w-full max-w-6xl h-auto object-contain"
-//       />
-      
-    
-//     </section>
-//   );
-// }
-
-
 
 import forbes from "../../assets/forbes.png"
 import webmd from "../../assets/webmd.svg"
@@ -31,7 +11,7 @@ import glamour from "../../assets/glamour.svg"
 import npr from "../../assets/npr.jpg"
 import nyt from "../../assets/the-new-york-times.svg"
 import times from "../../assets/the-times.png"
-
+import cosmo from "../../assets/cosmos.png"
 export default function Author() {
   return (
     <section className="flex flex-col justify-center items-center py-10 px-4 space-y-10">
@@ -52,7 +32,8 @@ export default function Author() {
         <img src={gq} alt="Author 9" className=" object-contain w-30 h-30" />
         <img src={npr} alt="Author 10" className=" object-contain w-30 h-30" />
         <img src={nyt} alt="Author 11" className=" object-contain w-30 h-30" />
-         <img src={times} alt="Author 12" className=" object-contain w-30 h-30" />
+        <img src={times} alt="Author 12" className=" object-contain w-30 h-30" />
+        <img src={cosmo} alt="Author 13" className=" object-contain w-30 h-30" />
       </div>
     </section>
   );

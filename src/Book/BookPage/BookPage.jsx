@@ -71,7 +71,7 @@ export default function BookPage() {
                   <img
                     src={
                       book.images?.[0]
-                        ? `${import.meta.env.VITE_BACKEND_URL}/${book.images[0].replace(/\\/g, "/")}`
+                        ? `${import.meta.env.VITE_BACKEND_URL}/api/${book.images[0].replace(/\\/g, "/")}`
                         : "https://via.placeholder.com/400x600"
                     }
                     alt={book.title}

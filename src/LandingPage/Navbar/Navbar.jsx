@@ -48,15 +48,19 @@ export default function Navbar() {
         </button>
 
         <div className="hidden sm:flex gap-6">
-          {Links.map((link) => (
-            <a
-              key={link.id}
-              href={link.link}
-              className="lnknav text-[14px] sm:text-[16px] font-normal duration-300 montserrat-main"
-            >
-              {link.name}
-            </a>
-          ))}
+         {Links.map((link) => (
+  <a
+    key={link.id}
+    href={link.link}
+    className="lnknav text-[14px] sm:text-[16px] font-normal duration-300 montserrat-main"
+    {...(link.name === "My Spine Coach"
+      ? { target: "_blank", rel: "noopener noreferrer" }
+      : {})}
+  >
+    {link.name}
+  </a>
+))}
+
         </div>
       </div>
 
@@ -66,15 +70,19 @@ export default function Navbar() {
           className="sm:hidden flex flex-col items-center gap-4 pb-4"
         >
           {Links.map((link) => (
-            <a
-              key={link.id}
-              href={link.link}
-              className="lnknav text-[14px] font-normal montserrat-main"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
+  <a
+    key={link.id}
+    href={link.link}
+    className="lnknav text-[14px] font-normal montserrat-main"
+    onClick={() => setIsOpen(false)}
+    {...(link.name === "My Spine Coach"
+      ? { target: "_blank", rel: "noopener noreferrer" }
+      : {})}
+  >
+    {link.name}
+  </a>
+))}
+
         </div>
       )}
     </nav>

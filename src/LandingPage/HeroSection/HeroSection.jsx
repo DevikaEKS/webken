@@ -74,9 +74,7 @@ export default function HeroSection() {
     }, 100); 
   };
 
-  const Coursepage = () => {
-    navigate("/myspinecoach");
-  };
+
 
   return (
     <>
@@ -121,10 +119,20 @@ export default function HeroSection() {
             </button>
             <button
               className=" px-1 px-md-2 py-1 py-md-2 flex items-center justify-center gap-2 secondbtn shadow-sm"
-              onClick={Coursepage}
+              
             >
-              <img src="./play.png" alt="Play Icon" className="w-10 h-10 " />
-              <span className="text-white font-bold text-base sm:text-lg">My Spine Coach</span>
+              <a
+  href="http://18.232.97.230/myspinecoach"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-1 px-md-2 py-1 py-md-2 flex items-center justify-center gap-2 secondbtn shadow-sm"
+>
+  <img src="./play.png" alt="Play Icon" className="w-10 h-10" />
+  <span className="text-white font-bold text-base sm:text-lg text-decoration-none" >My Spine Coach</span>
+</a>
+              
+              
+         
             </button>
           </div>
         </div>

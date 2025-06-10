@@ -5,7 +5,7 @@ export const Links = [
   { id: 2, name: "About", link: "/about" },
   { id: 3, name: "Blog", link: "/blog" },
   { id: 4, name: "Book", link: "/book" },
-  { id: 5, name: "My Spine Coach", link: "/myspinecoach" },
+  { id: 5, name: "My Spine Coach", link: "http://18.232.97.230/myspinecoach" },
   { id: 6, name: "Contact", link: "/Contact" },
 ];
 

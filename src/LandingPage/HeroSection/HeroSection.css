@@ -30,3 +30,7 @@
         text-align: start;
     }
 }
+
+a{
+    text-decoration: none !important;
+}

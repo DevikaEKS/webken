@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import "./Payment.css"; // Custom CSS for styling
 import { useNavigate, useParams } from "react-router-dom";
-import MySpineCoach from "../../../Asset/MySpineCoach.jpg"; // Example image
+import MySpineCoach from "../../../Asset/https://bit.ly/drkenlms.jpg"; // Example image
 
 const stripePromise = loadStripe(
   "pk_test_51OT2FaSHtllxmCJSGKaAzZmIfYDedAkOkUhZqLs8GAvPlEQsasgY7zKxH0iDm4E1Nu11OEyVv7kCPp3MhvK7P85i00ecnTPLf9"
